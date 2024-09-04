@@ -12,6 +12,18 @@
 		6B402D422C8750D6007C15D2 /* TicTacToeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B402D412C8750D6007C15D2 /* TicTacToeViewController.swift */; };
 		6B402D472C8750D7007C15D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B402D462C8750D7007C15D2 /* Assets.xcassets */; };
 		6B402D4A2C8750D7007C15D2 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 6B402D492C8750D7007C15D2 /* Base */; };
+		6B4120AC2C8858E400AF1BA6 /* WordleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120AB2C8858E400AF1BA6 /* WordleViewController.swift */; };
+		6B4120AE2C88598900AF1BA6 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120AD2C88598900AF1BA6 /* KeyboardViewController.swift */; };
+		6B4120B02C88599B00AF1BA6 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120AF2C88599B00AF1BA6 /* BoardViewController.swift */; };
+		6B4120B22C88637600AF1BA6 /* KeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120B12C88637600AF1BA6 /* KeyCell.swift */; };
+		6B4120B62C88C05C00AF1BA6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120B52C88C05C00AF1BA6 /* Model.swift */; };
+		6B4120BF2C88C82F00AF1BA6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120BE2C88C82F00AF1BA6 /* MainTabBarController.swift */; };
+		6B4120C22C88C86300AF1BA6 /* MiniAppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120C12C88C86300AF1BA6 /* MiniAppListViewController.swift */; };
+		6B4120C42C88C8D700AF1BA6 /* MiniAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120C32C88C8D700AF1BA6 /* MiniAppCell.swift */; };
+		6B4120C62C88C92900AF1BA6 /* InteractiveAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120C52C88C92900AF1BA6 /* InteractiveAppCell.swift */; };
+		6B4120CA2C89107F00AF1BA6 /* InteractiveAppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120C92C89107F00AF1BA6 /* InteractiveAppListViewController.swift */; };
+		6B4120CC2C8910BB00AF1BA6 /* FullScreenAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120CB2C8910BB00AF1BA6 /* FullScreenAppViewController.swift */; };
+		6B4120CE2C89181A00AF1BA6 /* GameSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120CD2C89181A00AF1BA6 /* GameSelectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +34,18 @@
 		6B402D462C8750D7007C15D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B402D492C8750D7007C15D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B402D4B2C8750D7007C15D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B4120AB2C8858E400AF1BA6 /* WordleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleViewController.swift; sourceTree = "<group>"; };
+		6B4120AD2C88598900AF1BA6 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		6B4120AF2C88599B00AF1BA6 /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
+		6B4120B12C88637600AF1BA6 /* KeyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCell.swift; sourceTree = "<group>"; };
+		6B4120B52C88C05C00AF1BA6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		6B4120BE2C88C82F00AF1BA6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		6B4120C12C88C86300AF1BA6 /* MiniAppListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppListViewController.swift; sourceTree = "<group>"; };
+		6B4120C32C88C8D700AF1BA6 /* MiniAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppCell.swift; sourceTree = "<group>"; };
+		6B4120C52C88C92900AF1BA6 /* InteractiveAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveAppCell.swift; sourceTree = "<group>"; };
+		6B4120C92C89107F00AF1BA6 /* InteractiveAppListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveAppListViewController.swift; sourceTree = "<group>"; };
+		6B4120CB2C8910BB00AF1BA6 /* FullScreenAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenAppViewController.swift; sourceTree = "<group>"; };
+		6B4120CD2C89181A00AF1BA6 /* GameSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +79,11 @@
 			isa = PBXGroup;
 			children = (
 				6B402D512C87519A007C15D2 /* Application */,
-				6B402D412C8750D6007C15D2 /* TicTacToeViewController.swift */,
+				6B4120BD2C88C82300AF1BA6 /* MainTabBar */,
+				6B4120C72C89104500AF1BA6 /* MainViews */,
+				6B4120B42C88C04600AF1BA6 /* Model */,
+				6B4120AA2C8858C800AF1BA6 /* TicTacToe */,
+				6B4120A92C8858B600AF1BA6 /* Wordle */,
 				6B402D522C8751A6007C15D2 /* SupportingFiles */,
 			);
 			path = MiniApps;
@@ -78,6 +106,70 @@
 				6B402D4B2C8750D7007C15D2 /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		6B4120A92C8858B600AF1BA6 /* Wordle */ = {
+			isa = PBXGroup;
+			children = (
+				6B4120AB2C8858E400AF1BA6 /* WordleViewController.swift */,
+				6B4120AD2C88598900AF1BA6 /* KeyboardViewController.swift */,
+				6B4120AF2C88599B00AF1BA6 /* BoardViewController.swift */,
+				6B4120B32C88809000AF1BA6 /* Cell */,
+			);
+			path = Wordle;
+			sourceTree = "<group>";
+		};
+		6B4120AA2C8858C800AF1BA6 /* TicTacToe */ = {
+			isa = PBXGroup;
+			children = (
+				6B402D412C8750D6007C15D2 /* TicTacToeViewController.swift */,
+			);
+			path = TicTacToe;
+			sourceTree = "<group>";
+		};
+		6B4120B32C88809000AF1BA6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6B4120B12C88637600AF1BA6 /* KeyCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		6B4120B42C88C04600AF1BA6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6B4120B52C88C05C00AF1BA6 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6B4120BD2C88C82300AF1BA6 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				6B4120BE2C88C82F00AF1BA6 /* MainTabBarController.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		6B4120C72C89104500AF1BA6 /* MainViews */ = {
+			isa = PBXGroup;
+			children = (
+				6B4120C12C88C86300AF1BA6 /* MiniAppListViewController.swift */,
+				6B4120C92C89107F00AF1BA6 /* InteractiveAppListViewController.swift */,
+				6B4120CB2C8910BB00AF1BA6 /* FullScreenAppViewController.swift */,
+				6B4120CD2C89181A00AF1BA6 /* GameSelectionViewController.swift */,
+				6B4120C82C89106600AF1BA6 /* Cells */,
+			);
+			path = MainViews;
+			sourceTree = "<group>";
+		};
+		6B4120C82C89106600AF1BA6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6B4120C32C88C8D700AF1BA6 /* MiniAppCell.swift */,
+				6B4120C52C88C92900AF1BA6 /* InteractiveAppCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,9 +242,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B4120CA2C89107F00AF1BA6 /* InteractiveAppListViewController.swift in Sources */,
+				6B4120CC2C8910BB00AF1BA6 /* FullScreenAppViewController.swift in Sources */,
 				6B402D422C8750D6007C15D2 /* TicTacToeViewController.swift in Sources */,
+				6B4120B22C88637600AF1BA6 /* KeyCell.swift in Sources */,
+				6B4120C62C88C92900AF1BA6 /* InteractiveAppCell.swift in Sources */,
+				6B4120CE2C89181A00AF1BA6 /* GameSelectionViewController.swift in Sources */,
+				6B4120C42C88C8D700AF1BA6 /* MiniAppCell.swift in Sources */,
+				6B4120BF2C88C82F00AF1BA6 /* MainTabBarController.swift in Sources */,
+				6B4120AE2C88598900AF1BA6 /* KeyboardViewController.swift in Sources */,
+				6B4120AC2C8858E400AF1BA6 /* WordleViewController.swift in Sources */,
 				6B402D3E2C8750D6007C15D2 /* AppDelegate.swift in Sources */,
 				6B402D402C8750D6007C15D2 /* SceneDelegate.swift in Sources */,
+				6B4120B02C88599B00AF1BA6 /* BoardViewController.swift in Sources */,
+				6B4120B62C88C05C00AF1BA6 /* Model.swift in Sources */,
+				6B4120C22C88C86300AF1BA6 /* MiniAppListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
