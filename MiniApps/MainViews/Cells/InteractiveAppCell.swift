@@ -20,32 +20,18 @@ class InteractiveAppCell: UICollectionViewCell {
         return view
     }()
     
-    private let appTitleLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 18, weight: .bold)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    var appContainerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
-    let actionButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Открыть на весь экран", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 8
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    // Конструктор ячейки
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(containerView)
-        containerView.addSubview(appTitleLabel)
-        containerView.addSubview(actionButton)
-        
+        containerView.addSubview(appContainerView)
         setupConstraints()
+        layer.masksToBounds = true
     }
     
     required init?(coder: NSCoder) {
@@ -54,15 +40,29 @@ class InteractiveAppCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        appTitleLabel.text = nil
+
+        for subview in appContainerView.subviews {
+            subview.removeFromSuperview()
+        }
     }
     
-    // Метод конфигурации для установки данных ячейки
-    func configure(with title: String) {
-        appTitleLabel.text = title
+    func configure(with appViewController: UIViewController, parentViewController: UIViewController) {
+
+        for childVC in parentViewController.children {
+            if childVC.view.isDescendant(of: appContainerView) {
+                childVC.willMove(toParent: nil)
+                childVC.view.removeFromSuperview()
+                childVC.removeFromParent()
+            }
+        }
+        
+        parentViewController.addChild(appViewController)
+        appViewController.view.frame = appContainerView.bounds
+        appContainerView.addSubview(appViewController.view)
+        appViewController.didMove(toParent: parentViewController)
+        
     }
-    
-    // Настройка автолейаутов
+
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
@@ -70,14 +70,11 @@ class InteractiveAppCell: UICollectionViewCell {
             containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             
-            appTitleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
-            appTitleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
-            appTitleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
-            
-            actionButton.topAnchor.constraint(equalTo: appTitleLabel.bottomAnchor, constant: 20),
-            actionButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            actionButton.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.7),
-            actionButton.heightAnchor.constraint(equalToConstant: 44)
+            appContainerView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+            appContainerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            appContainerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+            appContainerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10)
         ])
+            containerView.layoutIfNeeded()
     }
 }

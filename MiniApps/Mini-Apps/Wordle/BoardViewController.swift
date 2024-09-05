@@ -1,5 +1,5 @@
 //
-//  KeyboardViewController.swift
+//  BoardViewController.swift
 //  MiniApps
 //
 //  Created by Василий Тихонов on 04.09.2024.
@@ -7,20 +7,18 @@
 
 import UIKit
 
-protocol KeyboardViewControllerDelegate: AnyObject {
-    func keyboardViewController(_ vc: KeyboardViewController, didTapKey letter: Character)
+protocol BoardViewControllerDataSource: AnyObject {
+    var currentGuesses: [[Character?]] { get }
+    func boxColor(at indexPath: IndexPath) -> UIColor?
 }
 
-class KeyboardViewController: UIViewController {
+class BoardViewController: UIViewController {
     
-    weak var delegate: KeyboardViewControllerDelegate?
-    
-    let letters = ["qwertyuiop", "asdfghjkl", "zxcvbnm"]
-    private var keys: [[Character]] = []
+    weak var datasourse: BoardViewControllerDataSource?
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 2
+        layout.minimumInteritemSpacing = 4
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
@@ -36,74 +34,72 @@ class KeyboardViewController: UIViewController {
         
         NSLayoutConstraint.activate([
         
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor,constant: 30),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 5),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -5),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 35),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -35),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
         ])
-        
-        for row in letters {
-            let chars = Array(row)
-            keys.append(chars)
-        }
-
+    }
+    
+    func reloadData() {
+        collectionView.reloadData()
     }
 }
 
-extension KeyboardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension BoardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return keys.count
+        return datasourse?.currentGuesses.count ?? 0
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return keys[section].count
+        
+        let guesses = datasourse?.currentGuesses ?? []
+        return guesses[section].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KeyCell.identifier,
                                                             for: indexPath) as? KeyCell else { return UICollectionViewCell() }
-        let letter = keys[indexPath.section][indexPath.item]
-        cell.configure(with: letter)
+
+        cell.backgroundColor = datasourse?.boxColor(at: indexPath)
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.systemGray3.cgColor
+        
+        let guesses = datasourse?.currentGuesses ?? []
+        if let letter = guesses[indexPath.section][indexPath.row] {
+            cell.configure(with: letter)
+        }
         return cell
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-        let letter = keys[indexPath.section][indexPath.row]
-        delegate?.keyboardViewController(self, didTapKey: letter)
+        //
     }
+    
+    
 }
 
-extension KeyboardViewController: UICollectionViewDelegateFlowLayout {
+extension BoardViewController: UICollectionViewDelegateFlowLayout {
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let margin: CGFloat = 20
-        let size: CGFloat = (collectionView.frame.size.width - margin)/10
+        let size: CGFloat = (collectionView.frame.size.width - margin)/5
         
-        return CGSize(width: size, height: size * 1.5)
+        
+        return CGSize(width: size, height: size)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        var left: CGFloat = 1
-        var right: CGFloat = 1
-        
-        let margin: CGFloat = 20
-        let size: CGFloat = (collectionView.frame.size.width - margin)/10
-        let count: CGFloat = CGFloat(collectionView.numberOfItems(inSection: section))
-        
-        let inset: CGFloat = (collectionView.frame.size.width - (size * count) - (2 * count))/2
-        left = inset
-        right = inset
+
         
         return UIEdgeInsets(top: 2,
-                            left: left,
+                            left: 2,
                             bottom: 2,
-                            right: right)
+                            right: 2)
     }
 }
-

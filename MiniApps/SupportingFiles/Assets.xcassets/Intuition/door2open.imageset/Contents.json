@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "door2open.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

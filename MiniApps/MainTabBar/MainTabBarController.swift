@@ -16,9 +16,7 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTabs()
-        
         tabBar.tintColor = .black
-    
     }
     
     private func createTabBarItem(vc: UIViewController, title: String, image: String, selectedImage: String) -> UIViewController {
@@ -30,10 +28,9 @@ class MainTabBarController: UITabBarController {
     }
     
     private func setTabs() {
-        let miniVC = createTabBarItem(vc: miniViewController, title: "Мини-приложения", image: "house", selectedImage: "house.fill")
-        let halfVC = createTabBarItem(vc: halfViewController, title: "Интерактив", image: "message", selectedImage: "message.fill")
-      
-        let fullScreenVC = createTabBarItem(vc: fullScreenViewController, title: "Полный экран", image: "person", selectedImage: "person.fill")
+        let miniVC = createTabBarItem(vc: miniViewController, title: "Мини-приложения", image: "checklist.unchecked", selectedImage: "checklist.checked")
+        let halfVC = createTabBarItem(vc: halfViewController, title: "Интерактив", image: "equal.square", selectedImage: "equal.square.fill")
+        let fullScreenVC = createTabBarItem(vc: fullScreenViewController, title: "Полный экран", image: "line.3.horizontal.decrease.circle", selectedImage: "line.3.horizontal.decrease.circle.fill")
         setViewControllers([miniVC, halfVC, fullScreenVC], animated: false)
     }
 }

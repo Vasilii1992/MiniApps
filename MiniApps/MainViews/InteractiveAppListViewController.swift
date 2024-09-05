@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 class InteractiveAppListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     private lazy var collectionView: UICollectionView = {
@@ -16,28 +17,33 @@ class InteractiveAppListViewController: UIViewController, UICollectionViewDelega
         collectionView.register(InteractiveAppCell.self, forCellWithReuseIdentifier: InteractiveAppCell.identifier)
         collectionView.backgroundColor = .white
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         return collectionView
     }()
     
-    private let appNames = ["TicTacToe", "Wordle"]
+
+    private let miniApps: [MiniAppForInteractive] = [
+        MiniAppForInteractive(name: "Game", viewControllerFactory: { GameViewController() }),
+        MiniAppForInteractive(name: "Wordle", viewControllerFactory: { WordleViewController() }),
+        MiniAppForInteractive(name: "TicTacToe", viewControllerFactory: { TicTacToeViewController() }),
+    ]
+
+    private var miniAppControllers: [UIViewController?] = Array(repeating: nil, count: 10)
     
-    private let numberOfCells = 10
+    private let numberOfCells = 3
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupViews()
         setupConstraints()
-       
     }
     
     private func setupViews() {
+        title = "Интерактивная лента"
         view.addSubview(collectionView)
     }
     
     private func setupConstraints() {
-        
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -53,28 +59,24 @@ class InteractiveAppListViewController: UIViewController, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InteractiveAppCell.identifier, for: indexPath) as! InteractiveAppCell
         
-        let appName = appNames[indexPath.row % appNames.count]
-        cell.configure(with: appName)
+
+        let miniApp = miniApps[indexPath.row % miniApps.count]
         
-        cell.actionButton.tag = indexPath.row
-        cell.actionButton.addTarget(self, action: #selector(openFullScreen(_:)), for: .touchUpInside)
+
+        if miniAppControllers[indexPath.row] == nil {
+            miniAppControllers[indexPath.row] = miniApp.viewControllerFactory()
+        }
+        
+
+        if let miniAppVC = miniAppControllers[indexPath.row] {
+            cell.configure(with: miniAppVC, parentViewController: self)
+        }
         
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.size.width, height: view.frame.size.height / 2.6)
+        return CGSize(width: view.frame.size.width, height: view.frame.size.height / 2)
     }
-
-    @objc func openFullScreen(_ sender: UIButton) {
-        let appName = appNames[sender.tag % appNames.count]
-        
-        if appName == "TicTacToe" {
-            let ticTacToeVC = TicTacToeViewController()
-            navigationController?.pushViewController(ticTacToeVC, animated: true)
-        } else if appName == "Wordle" {
-            let wordleVC = WordleViewController()
-            navigationController?.pushViewController(wordleVC, animated: true)
-        }
-    }
+    
 }

@@ -24,6 +24,12 @@
 		6B4120CA2C89107F00AF1BA6 /* InteractiveAppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120C92C89107F00AF1BA6 /* InteractiveAppListViewController.swift */; };
 		6B4120CC2C8910BB00AF1BA6 /* FullScreenAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120CB2C8910BB00AF1BA6 /* FullScreenAppViewController.swift */; };
 		6B4120CE2C89181A00AF1BA6 /* GameSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120CD2C89181A00AF1BA6 /* GameSelectionViewController.swift */; };
+		6B585DDD2C89C127006BDA02 /* minecraft.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B585DDC2C89C127006BDA02 /* minecraft.ttf */; };
+		6B585DE12C89C26D006BDA02 /* UILabel.ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DE02C89C26D006BDA02 /* UILabel.ext.swift */; };
+		6B585DE52C89C2DB006BDA02 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DE42C89C2DB006BDA02 /* GameViewController.swift */; };
+		6B585DE82C89C307006BDA02 /* GameUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DE72C89C307006BDA02 /* GameUI.swift */; };
+		6B585DEB2C89C365006BDA02 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DEA2C89C365006BDA02 /* GameEngine.swift */; };
+		6B585DEE2C89C381006BDA02 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DED2C89C381006BDA02 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +52,12 @@
 		6B4120C92C89107F00AF1BA6 /* InteractiveAppListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveAppListViewController.swift; sourceTree = "<group>"; };
 		6B4120CB2C8910BB00AF1BA6 /* FullScreenAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenAppViewController.swift; sourceTree = "<group>"; };
 		6B4120CD2C89181A00AF1BA6 /* GameSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionViewController.swift; sourceTree = "<group>"; };
+		6B585DDC2C89C127006BDA02 /* minecraft.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = minecraft.ttf; sourceTree = "<group>"; };
+		6B585DE02C89C26D006BDA02 /* UILabel.ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.ext.swift; sourceTree = "<group>"; };
+		6B585DE42C89C2DB006BDA02 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		6B585DE72C89C307006BDA02 /* GameUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUI.swift; sourceTree = "<group>"; };
+		6B585DEA2C89C365006BDA02 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
+		6B585DED2C89C381006BDA02 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,11 +91,10 @@
 			isa = PBXGroup;
 			children = (
 				6B402D512C87519A007C15D2 /* Application */,
+				6B4120B42C88C04600AF1BA6 /* Model */,
 				6B4120BD2C88C82300AF1BA6 /* MainTabBar */,
 				6B4120C72C89104500AF1BA6 /* MainViews */,
-				6B4120B42C88C04600AF1BA6 /* Model */,
-				6B4120AA2C8858C800AF1BA6 /* TicTacToe */,
-				6B4120A92C8858B600AF1BA6 /* Wordle */,
+				6B585DDE2C89C1A4006BDA02 /* Mini-Apps */,
 				6B402D522C8751A6007C15D2 /* SupportingFiles */,
 			);
 			path = MiniApps;
@@ -101,6 +112,7 @@
 		6B402D522C8751A6007C15D2 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				6B585DD92C89BD23006BDA02 /* Font */,
 				6B402D462C8750D7007C15D2 /* Assets.xcassets */,
 				6B402D482C8750D7007C15D2 /* LaunchScreen.storyboard */,
 				6B402D4B2C8750D7007C15D2 /* Info.plist */,
@@ -172,6 +184,76 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		6B585DD92C89BD23006BDA02 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				6B585DDC2C89C127006BDA02 /* minecraft.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		6B585DDE2C89C1A4006BDA02 /* Mini-Apps */ = {
+			isa = PBXGroup;
+			children = (
+				6B585DDF2C89C1F5006BDA02 /* Intuition */,
+				6B4120A92C8858B600AF1BA6 /* Wordle */,
+				6B4120AA2C8858C800AF1BA6 /* TicTacToe */,
+			);
+			path = "Mini-Apps";
+			sourceTree = "<group>";
+		};
+		6B585DDF2C89C1F5006BDA02 /* Intuition */ = {
+			isa = PBXGroup;
+			children = (
+				6B585DE22C89C2AF006BDA02 /* Controller */,
+				6B585DE62C89C2F6006BDA02 /* UI */,
+				6B585DEC2C89C377006BDA02 /* Coordinator */,
+				6B585DE92C89C353006BDA02 /* Engine */,
+				6B585DE32C89C2BC006BDA02 /* Extensions */,
+			);
+			path = Intuition;
+			sourceTree = "<group>";
+		};
+		6B585DE22C89C2AF006BDA02 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6B585DE42C89C2DB006BDA02 /* GameViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6B585DE32C89C2BC006BDA02 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6B585DE02C89C26D006BDA02 /* UILabel.ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6B585DE62C89C2F6006BDA02 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6B585DE72C89C307006BDA02 /* GameUI.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		6B585DE92C89C353006BDA02 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				6B585DEA2C89C365006BDA02 /* GameEngine.swift */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		6B585DEC2C89C377006BDA02 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				6B585DED2C89C381006BDA02 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -232,6 +314,7 @@
 			files = (
 				6B402D472C8750D7007C15D2 /* Assets.xcassets in Resources */,
 				6B402D4A2C8750D7007C15D2 /* Base in Resources */,
+				6B585DDD2C89C127006BDA02 /* minecraft.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,9 +331,14 @@
 				6B4120B22C88637600AF1BA6 /* KeyCell.swift in Sources */,
 				6B4120C62C88C92900AF1BA6 /* InteractiveAppCell.swift in Sources */,
 				6B4120CE2C89181A00AF1BA6 /* GameSelectionViewController.swift in Sources */,
+				6B585DE52C89C2DB006BDA02 /* GameViewController.swift in Sources */,
+				6B585DE82C89C307006BDA02 /* GameUI.swift in Sources */,
 				6B4120C42C88C8D700AF1BA6 /* MiniAppCell.swift in Sources */,
 				6B4120BF2C88C82F00AF1BA6 /* MainTabBarController.swift in Sources */,
+				6B585DEB2C89C365006BDA02 /* GameEngine.swift in Sources */,
 				6B4120AE2C88598900AF1BA6 /* KeyboardViewController.swift in Sources */,
+				6B585DEE2C89C381006BDA02 /* Coordinator.swift in Sources */,
+				6B585DE12C89C26D006BDA02 /* UILabel.ext.swift in Sources */,
 				6B4120AC2C8858E400AF1BA6 /* WordleViewController.swift in Sources */,
 				6B402D3E2C8750D6007C15D2 /* AppDelegate.swift in Sources */,
 				6B402D402C8750D6007C15D2 /* SceneDelegate.swift in Sources */,

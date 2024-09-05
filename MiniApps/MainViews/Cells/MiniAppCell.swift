@@ -40,7 +40,7 @@ class MiniAppCell: UICollectionViewCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(appImage)
         addSubview(descriptionLabel)
-        contentView.backgroundColor = .systemGray6
+        contentView.backgroundColor = #colorLiteral(red: 0.9411764741, green: 0.9411764741, blue: 0.9411764741, alpha: 1)
         
         setupConstraints()
     }
@@ -67,9 +67,9 @@ class MiniAppCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             appImage.heightAnchor.constraint(equalToConstant: contentView.bounds.height),
             appImage.widthAnchor.constraint(equalToConstant: 100),
-            appImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            appImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 2),
             
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             titleLabel.leadingAnchor.constraint(equalTo: appImage.trailingAnchor, constant: 20),
             
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),

@@ -23,13 +23,16 @@ class MiniAppListViewController: UIViewController, UICollectionViewDelegate, UIC
     
     let appNames: [MiniApps] = [
         .init(name: "TicTacToe", image: "TicTacToe", description: "Классическая игра в кресики нолики"),
-        .init(name: "Wordle", image: "wordle", description: "Игра, где нужно угадать слово")
+        .init(name: "Wordle", image: "wordle", description: "Игра, где нужно угадать слово"),
+        .init(name: "Intuition", image: "intuition", description: "Откадай дверь")
     ]
     
     private let numberOfCells = 10
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Список приложений"
+        navigationController?.navigationBar.prefersLargeTitles = true
         setupViews()
         setupConstraints()
 
@@ -47,38 +50,45 @@ class MiniAppListViewController: UIViewController, UICollectionViewDelegate, UIC
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-
+    
+   static func createBackBarButtonItem(target: Any?, action: Selector) -> UIBarButtonItem {
+         let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"),
+                                             style: .plain,
+                                             target: target,
+                                             action: action)
+         barButtonItem.tintColor = .black
+         return barButtonItem
+     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfCells
     }
 
-   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MiniAppCell.identifier, for: indexPath) as! MiniAppCell
         
- 
         let appName = appNames[indexPath.row % appNames.count]
         cell.configure(with: appName.name, image: appName.image, description: appName.description)
         
         return cell
     }
 
-   
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.size.width, height: view.frame.size.height / 8)
     }
-   
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-      
         let appName = appNames[indexPath.row % appNames.count]
-   
+        
         if appName.name == "TicTacToe" {
             let ticTacToeVC = TicTacToeViewController()
             navigationController?.pushViewController(ticTacToeVC, animated: true)
         } else if appName.name == "Wordle" {
             let wordleVC = WordleViewController()
             navigationController?.pushViewController(wordleVC, animated: true)
+        } else if appName.name == "Intuition" {
+            let intuitionVC = GameViewController()
+            navigationController?.pushViewController(intuitionVC, animated: true)
         }
     }
 }

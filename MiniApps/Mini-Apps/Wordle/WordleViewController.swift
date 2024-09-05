@@ -18,15 +18,26 @@ class WordleViewController: UIViewController {
     
     let keyboardVC = KeyboardViewController()
     let boardVC = BoardViewController()
+    private lazy var backBarButtonItem = MiniAppListViewController.createBackBarButtonItem(target: self, action: #selector(backBarButtonItemTapped))
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
         answer = anwsers.randomElement() ?? "after"
-        view.backgroundColor = .systemGray6
         addChildren()
         
         
+    }
+    
+    @objc func backBarButtonItemTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    private func setupViews() {
+        title = "Wordle"
+        view.backgroundColor = .systemGray6
+        navigationItem.leftBarButtonItem = backBarButtonItem
     }
     
     private func addChildren() {
@@ -57,6 +68,7 @@ class WordleViewController: UIViewController {
             keyboardVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             keyboardVC.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
 
+
         ])
     }
 }
@@ -79,6 +91,37 @@ extension WordleViewController: KeyboardViewControllerDelegate {
             }
         }
         boardVC.reloadData()
+        checkCurrentGuess()
+    }
+    
+    private func checkCurrentGuess() {
+        // Находим последнюю заполненную строку
+        for row in guesses {
+            let count = row.compactMap { $0 }.count
+            if count == 5 {
+                let guessWord = String(row.compactMap { $0 })
+                if guessWord.lowercased() == answer.lowercased() {
+                    resultAlert(title: "Вы угадали слово!\n\(guessWord.uppercased())")
+                }
+            }
+        }
+    }
+    
+    private func resetGame() {
+        guesses = Array(repeating: Array(repeating: nil, count: 5), count: 6)
+        answer = anwsers.randomElement() ?? "after"
+        boardVC.reloadData()
+    }
+    
+    private func resultAlert(title: String) {
+        
+        let ac = UIAlertController(title: title,
+                                   message: nil,
+                                   preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "Reset", style: .default, handler: { [weak self] _ in
+            self?.resetGame()
+        }))
+        present(ac, animated: true)
     }
 }
 
@@ -102,7 +145,6 @@ extension WordleViewController: BoardViewControllerDataSource {
         if indexedAnswer[indexPath.row] == letter {
             return .systemGreen
         }
-        
         return .systemOrange
     }
 }

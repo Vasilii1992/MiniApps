@@ -30,7 +30,7 @@ final class TicTacToeViewController: UIViewController {
     private lazy var vStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.spacing = 5
+        stack.spacing = 3
         stack.alignment = .fill
         stack.distribution = .fillEqually
         stack.backgroundColor = .black
@@ -47,7 +47,7 @@ final class TicTacToeViewController: UIViewController {
                 button.setTitle("", for: .normal)
                 button.setTitleColor(.black, for: .normal)
                 button.titleLabel?.font = .systemFont(ofSize: 20, weight: .black)
-                button.backgroundColor = .white
+                button.backgroundColor = .systemGray6
                 button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
                 row.append(button)
             }
@@ -55,6 +55,9 @@ final class TicTacToeViewController: UIViewController {
         }
         return buttonGrid
     }()
+    
+    private lazy var backBarButtonItem = MiniAppListViewController.createBackBarButtonItem(target: self, action: #selector(backBarButtonItemTapped))
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,11 +68,19 @@ final class TicTacToeViewController: UIViewController {
         setupConstraints()
 
     }
+
+    @objc func backBarButtonItemTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     
     private func setupViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
+        title = "TicTacToe"
         view.addSubview(vStack)
         view.addSubview(turnLabel)
+        navigationItem.leftBarButtonItem = backBarButtonItem
+
     }
     
     private func setupConstraints() {
@@ -79,7 +90,7 @@ final class TicTacToeViewController: UIViewController {
             vStack.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
             vStack.heightAnchor.constraint(equalTo: vStack.widthAnchor),
             
-            turnLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            turnLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             turnLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
@@ -88,7 +99,7 @@ final class TicTacToeViewController: UIViewController {
         for row in buttons {
             let hStack = UIStackView(arrangedSubviews: row)
             hStack.axis = .horizontal
-            hStack.spacing = 5
+            hStack.spacing = 3
             hStack.alignment = .fill
             hStack.distribution = .fillEqually
             vStack.addArrangedSubview(hStack)
@@ -101,8 +112,8 @@ final class TicTacToeViewController: UIViewController {
         let ac = UIAlertController(title: title,
                                    message: message,
                                    preferredStyle: .actionSheet)
-        ac.addAction(UIAlertAction(title: "Reset", style: .default, handler: { _ in
-            self.resetBoard()
+        ac.addAction(UIAlertAction(title: "Reset", style: .default, handler: { [weak self] _ in
+            self?.resetBoard()
         }))
         self.present(ac, animated: true)
     }
