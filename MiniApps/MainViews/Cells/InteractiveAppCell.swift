@@ -20,12 +20,14 @@ class InteractiveAppCell: UICollectionViewCell {
         return view
     }()
     
+    // Контейнер для мини-приложения
     var appContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
+    // Конструктор ячейки
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(containerView)
@@ -40,14 +42,16 @@ class InteractiveAppCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-
+        // Удаляем все под-VC из контейнера
         for subview in appContainerView.subviews {
             subview.removeFromSuperview()
         }
     }
     
+    // Метод конфигурации для установки данных ячейки
     func configure(with appViewController: UIViewController, parentViewController: UIViewController) {
 
+        // Удаляем предыдущие контроллеры из родителя, если они были
         for childVC in parentViewController.children {
             if childVC.view.isDescendant(of: appContainerView) {
                 childVC.willMove(toParent: nil)
@@ -56,6 +60,7 @@ class InteractiveAppCell: UICollectionViewCell {
             }
         }
         
+        // Добавляем mini-app контроллер в контейнер
         parentViewController.addChild(appViewController)
         appViewController.view.frame = appContainerView.bounds
         appContainerView.addSubview(appViewController.view)
@@ -63,6 +68,7 @@ class InteractiveAppCell: UICollectionViewCell {
         
     }
 
+    // Настройка автолейаутов
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),

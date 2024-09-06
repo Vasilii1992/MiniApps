@@ -45,4 +45,5 @@ class KeyCell: UICollectionViewCell {
     func configure(with letter: Character) {
         label.text = String(letter).uppercased()
     }
+    
 }

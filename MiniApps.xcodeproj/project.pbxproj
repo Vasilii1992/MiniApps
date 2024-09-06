@@ -24,6 +24,13 @@
 		6B4120CA2C89107F00AF1BA6 /* InteractiveAppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120C92C89107F00AF1BA6 /* InteractiveAppListViewController.swift */; };
 		6B4120CC2C8910BB00AF1BA6 /* FullScreenAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120CB2C8910BB00AF1BA6 /* FullScreenAppViewController.swift */; };
 		6B4120CE2C89181A00AF1BA6 /* GameSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120CD2C89181A00AF1BA6 /* GameSelectionViewController.swift */; };
+		6B54791C2C8B97AF00F8A2DE /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B54791B2C8B97AF00F8A2DE /* ApiManager.swift */; };
+		6B54791E2C8B97CD00F8A2DE /* WeatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B54791D2C8B97CD00F8A2DE /* WeatherError.swift */; };
+		6B5479222C8B981400F8A2DE /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5479212C8B981400F8A2DE /* Weather.swift */; };
+		6B5479252C8B985500F8A2DE /* WeatherLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5479242C8B985500F8A2DE /* WeatherLabel.swift */; };
+		6B5479282C8B987E00F8A2DE /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 6B5479272C8B987E00F8A2DE /* SDWebImage */; };
+		6B54792A2C8B987E00F8A2DE /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6B5479292C8B987E00F8A2DE /* SDWebImageMapKit */; };
+		6B54792D2C8B98C900F8A2DE /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B54792C2C8B98C900F8A2DE /* WeatherViewController.swift */; };
 		6B585DDD2C89C127006BDA02 /* minecraft.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B585DDC2C89C127006BDA02 /* minecraft.ttf */; };
 		6B585DE12C89C26D006BDA02 /* UILabel.ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DE02C89C26D006BDA02 /* UILabel.ext.swift */; };
 		6B585DE52C89C2DB006BDA02 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DE42C89C2DB006BDA02 /* GameViewController.swift */; };
@@ -52,6 +59,11 @@
 		6B4120C92C89107F00AF1BA6 /* InteractiveAppListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveAppListViewController.swift; sourceTree = "<group>"; };
 		6B4120CB2C8910BB00AF1BA6 /* FullScreenAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenAppViewController.swift; sourceTree = "<group>"; };
 		6B4120CD2C89181A00AF1BA6 /* GameSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionViewController.swift; sourceTree = "<group>"; };
+		6B54791B2C8B97AF00F8A2DE /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		6B54791D2C8B97CD00F8A2DE /* WeatherError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherError.swift; sourceTree = "<group>"; };
+		6B5479212C8B981400F8A2DE /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		6B5479242C8B985500F8A2DE /* WeatherLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLabel.swift; sourceTree = "<group>"; };
+		6B54792C2C8B98C900F8A2DE /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		6B585DDC2C89C127006BDA02 /* minecraft.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = minecraft.ttf; sourceTree = "<group>"; };
 		6B585DE02C89C26D006BDA02 /* UILabel.ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.ext.swift; sourceTree = "<group>"; };
 		6B585DE42C89C2DB006BDA02 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B54792A2C8B987E00F8A2DE /* SDWebImageMapKit in Frameworks */,
+				6B5479282C8B987E00F8A2DE /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +198,50 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		6B54791A2C8B975A00F8A2DE /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				6B54792B2C8B98B800F8A2DE /* ViewController */,
+				6B5479232C8B984200F8A2DE /* UI */,
+				6B5479202C8B980000F8A2DE /* Model */,
+				6B54791F2C8B97DB00F8A2DE /* Networking */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		6B54791F2C8B97DB00F8A2DE /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				6B54791B2C8B97AF00F8A2DE /* ApiManager.swift */,
+				6B54791D2C8B97CD00F8A2DE /* WeatherError.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		6B5479202C8B980000F8A2DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6B5479212C8B981400F8A2DE /* Weather.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6B5479232C8B984200F8A2DE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6B5479242C8B985500F8A2DE /* WeatherLabel.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		6B54792B2C8B98B800F8A2DE /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6B54792C2C8B98C900F8A2DE /* WeatherViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		6B585DD92C89BD23006BDA02 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +253,7 @@
 		6B585DDE2C89C1A4006BDA02 /* Mini-Apps */ = {
 			isa = PBXGroup;
 			children = (
+				6B54791A2C8B975A00F8A2DE /* Weather */,
 				6B585DDF2C89C1F5006BDA02 /* Intuition */,
 				6B4120A92C8858B600AF1BA6 /* Wordle */,
 				6B4120AA2C8858C800AF1BA6 /* TicTacToe */,
@@ -270,6 +329,10 @@
 			dependencies = (
 			);
 			name = MiniApps;
+			packageProductDependencies = (
+				6B5479272C8B987E00F8A2DE /* SDWebImage */,
+				6B5479292C8B987E00F8A2DE /* SDWebImageMapKit */,
+			);
 			productName = MiniApps;
 			productReference = 6B402D3A2C8750D6007C15D2 /* MiniApps.app */;
 			productType = "com.apple.product-type.application";
@@ -298,6 +361,9 @@
 				Base,
 			);
 			mainGroup = 6B402D312C8750D6007C15D2;
+			packageReferences = (
+				6B5479262C8B987E00F8A2DE /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 6B402D3B2C8750D6007C15D2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -325,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B5479222C8B981400F8A2DE /* Weather.swift in Sources */,
 				6B4120CA2C89107F00AF1BA6 /* InteractiveAppListViewController.swift in Sources */,
 				6B4120CC2C8910BB00AF1BA6 /* FullScreenAppViewController.swift in Sources */,
 				6B402D422C8750D6007C15D2 /* TicTacToeViewController.swift in Sources */,
@@ -335,12 +402,16 @@
 				6B585DE82C89C307006BDA02 /* GameUI.swift in Sources */,
 				6B4120C42C88C8D700AF1BA6 /* MiniAppCell.swift in Sources */,
 				6B4120BF2C88C82F00AF1BA6 /* MainTabBarController.swift in Sources */,
+				6B54791C2C8B97AF00F8A2DE /* ApiManager.swift in Sources */,
 				6B585DEB2C89C365006BDA02 /* GameEngine.swift in Sources */,
+				6B5479252C8B985500F8A2DE /* WeatherLabel.swift in Sources */,
 				6B4120AE2C88598900AF1BA6 /* KeyboardViewController.swift in Sources */,
 				6B585DEE2C89C381006BDA02 /* Coordinator.swift in Sources */,
+				6B54792D2C8B98C900F8A2DE /* WeatherViewController.swift in Sources */,
 				6B585DE12C89C26D006BDA02 /* UILabel.ext.swift in Sources */,
 				6B4120AC2C8858E400AF1BA6 /* WordleViewController.swift in Sources */,
 				6B402D3E2C8750D6007C15D2 /* AppDelegate.swift in Sources */,
+				6B54791E2C8B97CD00F8A2DE /* WeatherError.swift in Sources */,
 				6B402D402C8750D6007C15D2 /* SceneDelegate.swift in Sources */,
 				6B4120B02C88599B00AF1BA6 /* BoardViewController.swift in Sources */,
 				6B4120B62C88C05C00AF1BA6 /* Model.swift in Sources */,
@@ -565,6 +636,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6B5479262C8B987E00F8A2DE /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.19.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6B5479272C8B987E00F8A2DE /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B5479262C8B987E00F8A2DE /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		6B5479292C8B987E00F8A2DE /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B5479262C8B987E00F8A2DE /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6B402D322C8750D6007C15D2 /* Project object */;
 }

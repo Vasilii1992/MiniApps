@@ -9,8 +9,9 @@ import UIKit
 
 class GameSelectionViewController: UITableViewController {
 
-    let games = ["TicTacToe", "Wordle", "Intuition"]
+    let games = ["TicTacToe", "Wordle", "Intuition", "Weather"]
     
+    // Объявляем делегат
     weak var delegate: GameSelectionDelegate?
 
     override func viewDidLoad() {
@@ -32,8 +33,8 @@ class GameSelectionViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedGameIndex = indexPath.row
-
+        // Вызываем делегат для передачи выбранной игры
         delegate?.didSelectGame(index: selectedGameIndex)
-        dismiss(animated: true, completion: nil) 
+        dismiss(animated: true, completion: nil) // Закрываем popover после выбора
     }
 }
