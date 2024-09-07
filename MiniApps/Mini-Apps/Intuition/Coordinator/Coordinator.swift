@@ -54,15 +54,13 @@ final class Coordinator {
         view.addSubview(UI.mainLabelStack)
         view.addSubview(buttonView)
 
-        // Установка констрейнтов для backgroundSprite
         NSLayoutConstraint.activate([
             UI.backgroundSprite.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             UI.backgroundSprite.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             UI.backgroundSprite.topAnchor.constraint(equalTo: view.topAnchor),
-            UI.backgroundSprite.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            UI.backgroundSprite.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
 
-        // Установка констрейнтов для recordLabel и recordValue
         NSLayoutConstraint.activate([
             UI.recordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             UI.recordLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -70,13 +68,11 @@ final class Coordinator {
             UI.recordValue.centerYAnchor.constraint(equalTo: UI.recordLabel.centerYAnchor)
         ])
 
-        // Установка констрейнтов для mainLabelStack
         NSLayoutConstraint.activate([
             UI.mainLabelStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             UI.mainLabelStack.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -80)
         ])
 
-        // Установка констрейнтов для buttonsView и кнопок дверей
         NSLayoutConstraint.activate([
             buttonView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 80),

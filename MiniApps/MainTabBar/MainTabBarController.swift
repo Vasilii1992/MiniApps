@@ -17,6 +17,7 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         setTabs()
         tabBar.tintColor = .black
+        tabBar.backgroundColor = .systemGray6
     }
     
     private func createTabBarItem(vc: UIViewController, title: String, image: String, selectedImage: String) -> UIViewController {

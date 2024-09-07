@@ -118,15 +118,25 @@ enum LabelStrings: String {
         switch score {
         case 0:
             return ""
+        case 1:
+            return "Начало положено!"
+        case 2:
+            return "Это только разогрев!"
         case 3:
-            return "Повезло"
+            return "Повезло!"
+        case 4:
+            return "Поймал волну!"
         case 5:
-            return "Ты что, экстрасенс?"
+            return "Идешь на рекорд!"
+        case 6:
+            return "Ощущаешь силу!"
         case 7:
-            return "Вызывайте экзорциста!"
+            return "Это невозможно!"
+        case 8:
+            return "Ты уже почти легенда!"
         case 9:
             return "Это почти мировой рекорд!"
-        default :
+        default:
             return ""
         }
     }

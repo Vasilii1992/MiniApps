@@ -7,68 +7,53 @@
 
 import UIKit
 
-// Создаем протокол делегата для передачи выбранной игры
 protocol GameSelectionDelegate: AnyObject {
     func didSelectGame(index: Int)
 }
 
 class FullScreenAppViewController: UIViewController {
     
-    // Контроллеры для мини-приложений
     private var ticTacToeVC: TicTacToeViewController?
     private var wordleVC: WordleViewController?
     private var intuitionVC: GameViewController?
     private var weatherVC: WeatherViewController?
+    private var cryptoVC: CryptoController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Настраиваем UI
-        view.backgroundColor = .white
-        
-        // Настраиваем Navigation Bar
+        view.backgroundColor = .systemGray6
         setupNavigationBar()
-        
-        // Устанавливаем первоначальное приложение (TicTacToe)
-        displaySelectedApp(index: 0)
+        displaySelectedApp(index: 4)
     }
     
-    // Настройка Navigation Bar
     private func setupNavigationBar() {
-        // Устанавливаем заголовок
-        title = "Мини-игры"
-        navigationController?.navigationBar.prefersLargeTitles = true
         
-        // Добавляем кнопку выбора игры в правую часть Navigation Bar
+        navigationController?.navigationBar.prefersLargeTitles = true
         let gameButton = UIBarButtonItem(title: "Сменить", style: .done, target: self, action: #selector(showGameSelection(_:)))
         navigationItem.rightBarButtonItem = gameButton
         gameButton.tintColor = .black
     }
     
-    // Метод для отображения popover из кнопки
     @objc func showGameSelection(_ sender: UIBarButtonItem) {
-        // Создаем контроллер с таблицей для отображения списка
         let gameSelectionVC = GameSelectionViewController()
         gameSelectionVC.modalPresentationStyle = .popover
-        gameSelectionVC.delegate = self  // Устанавливаем делегат
+        gameSelectionVC.delegate = self
         
         if let popoverController = gameSelectionVC.popoverPresentationController {
-            popoverController.barButtonItem = sender // Указываем источник поповера
+            popoverController.barButtonItem = sender
             popoverController.permittedArrowDirections = .up
             popoverController.delegate = self
-            gameSelectionVC.preferredContentSize = CGSize(width: 300, height: 400) // Размер поповера
+            gameSelectionVC.preferredContentSize = CGSize(width: 200, height: 250)
         }
         
         present(gameSelectionVC, animated: true, completion: nil)
     }
     
-    // Метод для отображения выбранного мини-приложения
+    
     func displaySelectedApp(index: Int) {
-        // Удаляем предыдущие контроллеры, если они есть
         removeChildViewControllers()
         
         if index == 0 {
-            // Инициализируем TicTacToeViewController
             ticTacToeVC = TicTacToeViewController()
             guard let ticTacToeVC = ticTacToeVC else { return }
             addChild(ticTacToeVC)
@@ -77,7 +62,6 @@ class FullScreenAppViewController: UIViewController {
             ticTacToeVC.didMove(toParent: self)
             title = "TicTacToe"
         } else if index == 1 {
-            // Инициализируем WordleViewController
             wordleVC = WordleViewController()
             guard let wordleVC = wordleVC else { return }
             addChild(wordleVC)
@@ -101,11 +85,17 @@ class FullScreenAppViewController: UIViewController {
             view.addSubview(weatherVC.view)
             weatherVC.didMove(toParent: self)
             title = "Weather"
+        } else if index == 4 {
+            cryptoVC = CryptoController()
+            guard let cryptoVC = cryptoVC else { return }
+            addChild(cryptoVC)
+            cryptoVC.view.frame = view.bounds
+            view.addSubview(cryptoVC.view)
+            cryptoVC.didMove(toParent: self)
+            title = "Crypto"
         }
-        
     }
     
-    // Метод для удаления предыдущих дочерних контроллеров
     private func removeChildViewControllers() {
         for child in children {
             child.willMove(toParent: nil)
@@ -117,15 +107,13 @@ class FullScreenAppViewController: UIViewController {
 
 extension FullScreenAppViewController: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        // На iPhone popover будет отображаться как модальное окно
         return .none
     }
 }
 
-// Реализуем делегат для передачи выбора игры обратно
 extension FullScreenAppViewController: GameSelectionDelegate {
     func didSelectGame(index: Int) {
-        displaySelectedApp(index: index)  // Отображаем выбранную игру
+        displaySelectedApp(index: index)
     }
 }
 

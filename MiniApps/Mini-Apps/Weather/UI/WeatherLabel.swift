@@ -33,7 +33,7 @@ class WeatherLabel: UILabel {
         self.font = UIFont.systemFont(ofSize: fontSize, weight: weight)
         self.textColor = color
         self.text = labelText
-        self.numberOfLines = 1
+        self.numberOfLines = 2
         self.textAlignment = .center
         self.isHidden = labelIsHidden
     }

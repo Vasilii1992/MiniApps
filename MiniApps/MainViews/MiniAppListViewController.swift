@@ -22,13 +22,13 @@ class MiniAppListViewController: UIViewController, UICollectionViewDelegate, UIC
     }()
     
     let appNames: [MiniApps] = [
+        .init(name: "Crypto", image: "crypto", description: "Основные криптовалюты"),
         .init(name: "Weather", image: "weather", description: "Узнай погоду в любом городе"),
         .init(name: "TicTacToe", image: "TicTacToe", description: "Классическая игра в кресики нолики"),
         .init(name: "Wordle", image: "wordle", description: "Игра, где нужно угадать слово"),
         .init(name: "Intuition", image: "intuition", description: "Откадай дверь")
     ]
     
-    // Количество ячеек (должно быть 10)
     private let numberOfCells = 10
 
     override func viewDidLoad() {
@@ -62,33 +62,25 @@ class MiniAppListViewController: UIViewController, UICollectionViewDelegate, UIC
          return barButtonItem
      }
 
-    // Количество элементов в коллекции всегда 10
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfCells
     }
 
-    // Конфигурация ячеек
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MiniAppCell.identifier, for: indexPath) as! MiniAppCell
         
-        // Берем название приложения из массива по кругу
         let appName = appNames[indexPath.row % appNames.count]
         cell.configure(with: appName.name, image: appName.image, description: appName.description)
         
         return cell
     }
 
-    // Устанавливаем размер ячейки — 1/8 высоты экрана
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.size.width, height: view.frame.size.height / 8)
     }
     
-    // Реализуем метод для обработки нажатия на ячейку
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // Получаем название приложения по кругу
         let appName = appNames[indexPath.row % appNames.count]
-        
-        // Переход на соответствующее мини-приложение
         if appName.name == "TicTacToe" {
             let ticTacToeVC = TicTacToeViewController()
             navigationController?.pushViewController(ticTacToeVC, animated: true)
@@ -101,6 +93,10 @@ class MiniAppListViewController: UIViewController, UICollectionViewDelegate, UIC
         } else if appName.name == "Weather" {
             let weatherVC = WeatherViewController()
             navigationController?.pushViewController(weatherVC, animated: true)
+
+        } else if appName.name == "Crypto" {
+            let cryptoVC = CryptoController()
+            navigationController?.pushViewController(cryptoVC, animated: true)
 
         }
     }

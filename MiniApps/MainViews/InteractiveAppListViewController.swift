@@ -6,7 +6,7 @@
 //
 
 import UIKit
-// Вкладка 2: Список с возможностью взаимодействия
+
 class InteractiveAppListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     private lazy var collectionView: UICollectionView = {
@@ -21,14 +21,13 @@ class InteractiveAppListViewController: UIViewController, UICollectionViewDelega
         return collectionView
     }()
     
-    // Список с мини-приложениями
     private let miniApps: [MiniAppForInteractive] = [
-        MiniAppForInteractive(name: "Weather", viewControllerFactory: { WeatherViewController()}),
         MiniAppForInteractive(name: "Game", viewControllerFactory: { GameViewController() }),
+        MiniAppForInteractive(name: "Crypto", viewControllerFactory: { CryptoController() }),
+        MiniAppForInteractive(name: "Weather", viewControllerFactory: { WeatherViewController()}),
         MiniAppForInteractive(name: "Wordle", viewControllerFactory: { WordleViewController() }),
         MiniAppForInteractive(name: "TicTacToe", viewControllerFactory: { TicTacToeViewController() }),
     ]
-    // Массив с мини-приложениями
     private var miniAppControllers: [UIViewController?] = Array(repeating: nil, count: 10)
     
     private let numberOfCells = 10
@@ -60,15 +59,12 @@ class InteractiveAppListViewController: UIViewController, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InteractiveAppCell.identifier, for: indexPath) as! InteractiveAppCell
         
-        // Берем мини-приложение по кругу
         let miniApp = miniApps[indexPath.row % miniApps.count]
         
-        // Проверяем, существует ли уже контроллер для текущей ячейки
         if miniAppControllers[indexPath.row] == nil {
             miniAppControllers[indexPath.row] = miniApp.viewControllerFactory()
         }
         
-        // Передаем контроллер мини-приложения в ячейку
         if let miniAppVC = miniAppControllers[indexPath.row] {
             cell.configure(with: miniAppVC, parentViewController: self)
         }

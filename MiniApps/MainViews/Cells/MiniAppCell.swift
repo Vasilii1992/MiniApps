@@ -65,8 +65,8 @@ class MiniAppCell: UICollectionViewCell {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            appImage.heightAnchor.constraint(equalToConstant: contentView.bounds.height - 10),
-            appImage.widthAnchor.constraint(equalToConstant: 100),
+            appImage.widthAnchor.constraint(equalTo: contentView.heightAnchor,multiplier: 0.85), 
+            appImage.heightAnchor.constraint(equalTo: contentView.heightAnchor,multiplier: 0.85),
             appImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
             appImage.centerYAnchor.constraint(equalTo: centerYAnchor),
             

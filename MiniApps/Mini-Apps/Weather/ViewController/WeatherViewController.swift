@@ -24,6 +24,7 @@ class WeatherViewController: UIViewController {
         textField.leftView = paddingView
         textField.leftViewMode = .always
         textField.borderStyle = .roundedRect
+        textField.backgroundColor = .systemGray5
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -42,6 +43,8 @@ class WeatherViewController: UIViewController {
         return indicator
     }()
     
+    private lazy var backBarButtonItem = MiniAppListViewController.createBackBarButtonItem(target: self, action: #selector(backBarButtonItemTapped))
+    
     private var searchTimer: Timer?
     
     override func viewDidLoad() {
@@ -52,7 +55,9 @@ class WeatherViewController: UIViewController {
     }
     
     private func setupViews() {
+        title = "Weather"
         view.backgroundColor = .systemGray6
+        navigationItem.leftBarButtonItem = backBarButtonItem
         view.addSubview(mainLabel)
         view.addSubview(tempLabel)
         view.addSubview(feelsLikeLabel)
@@ -61,8 +66,10 @@ class WeatherViewController: UIViewController {
         view.addSubview(cityTextField)
         view.addSubview(activityIndicator)
         view.addSubview(errorLabel)
-
-
+    }
+    
+    @objc func backBarButtonItemTapped() {
+        navigationController?.popViewController(animated: true)
     }
     
     private func setupConstraints() {
@@ -94,7 +101,11 @@ class WeatherViewController: UIViewController {
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
             errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            errorLabel.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor, constant: 10)
+            errorLabel.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor, constant: 10),
+            errorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            errorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+
+
             
         ])
     }

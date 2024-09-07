@@ -182,19 +182,19 @@ private extension TicTacToeViewController {
     }
     
     func checkForVictory(_ s: String) -> Bool {
-        // Check rows
+        
         for i in 0..<3 {
             if thisSymbol(buttons[i][0], s) && thisSymbol(buttons[i][1], s) && thisSymbol(buttons[i][2], s) {
                 return true
             }
         }
-        // Check columns
+      
         for i in 0..<3 {
             if thisSymbol(buttons[0][i], s) && thisSymbol(buttons[1][i], s) && thisSymbol(buttons[2][i], s) {
                 return true
             }
         }
-        // Check diagonals
+        
         if thisSymbol(buttons[0][0], s) && thisSymbol(buttons[1][1], s) && thisSymbol(buttons[2][2], s) {
             return true
         }

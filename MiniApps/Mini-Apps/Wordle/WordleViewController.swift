@@ -95,7 +95,6 @@ extension WordleViewController: KeyboardViewControllerDelegate {
     }
     
     private func checkCurrentGuess() {
-        // Находим последнюю заполненную строку
         for row in guesses {
             let count = row.compactMap { $0 }.count
             if count == 5 {
