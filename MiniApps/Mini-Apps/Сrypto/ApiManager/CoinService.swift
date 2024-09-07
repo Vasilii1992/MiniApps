@@ -1,9 +1,3 @@
-//
-//  CoinService.swift
-//  MiniApps
-//
-//  Created by Василий Тихонов on 06.09.2024.
-//
 
 import Foundation
 

@@ -1,9 +1,3 @@
-//
-//  WordleViewController.swift
-//  MiniApps
-//
-//  Created by Василий Тихонов on 04.09.2024.
-//
 
 import UIKit
 
@@ -66,9 +60,7 @@ final class WordleViewController: UIViewController {
 
             keyboardVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             keyboardVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            keyboardVC.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-
-
+            keyboardVC.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }

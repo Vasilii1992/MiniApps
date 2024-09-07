@@ -1,9 +1,3 @@
-//
-//  KeyboardViewController.swift
-//  MiniApps
-//
-//  Created by Василий Тихонов on 04.09.2024.
-//
 
 import UIKit
 
@@ -39,8 +33,7 @@ final class KeyboardViewController: UIViewController {
             collectionView.topAnchor.constraint(equalTo: view.topAnchor,constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 5),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -5),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
         for row in letters {
@@ -106,4 +99,3 @@ extension KeyboardViewController: UICollectionViewDelegateFlowLayout {
                             right: right)
     }
 }
-

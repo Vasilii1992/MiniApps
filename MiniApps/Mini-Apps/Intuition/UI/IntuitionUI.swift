@@ -1,13 +1,7 @@
-//
-//  GameUI.swift
-//  MiniApps
-//
-//  Created by Василий Тихонов on 05.09.2024.
-//
 
 import UIKit
 
-final class GameUI {
+final class IntuitionUI {
 
     lazy var backgroundSprite: UIImageView = {
         let image = UIImageView()

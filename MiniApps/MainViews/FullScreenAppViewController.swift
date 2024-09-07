@@ -1,10 +1,3 @@
-//
-//  FullScreenAppViewController.swift
-//  MiniApps
-//
-//  Created by Василий Тихонов on 05.09.2024.
-//
-
 import UIKit
 
 protocol GameSelectionDelegate: AnyObject {

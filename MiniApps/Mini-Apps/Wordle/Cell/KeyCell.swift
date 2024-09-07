@@ -1,9 +1,3 @@
-//
-//  KeyCell.swift
-//  MiniApps
-//
-//  Created by Василий Тихонов on 04.09.2024.
-//
 
 import UIKit
 
@@ -28,8 +22,7 @@ final class KeyCell: UICollectionViewCell {
             label.topAnchor.constraint(equalTo: topAnchor),
             label.leadingAnchor.constraint(equalTo: leadingAnchor),
             label.trailingAnchor.constraint(equalTo: trailingAnchor),
-            label.bottomAnchor.constraint(equalTo: bottomAnchor),
-
+            label.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
@@ -45,5 +38,4 @@ final class KeyCell: UICollectionViewCell {
     func configure(with letter: Character) {
         label.text = String(letter).uppercased()
     }
-    
 }

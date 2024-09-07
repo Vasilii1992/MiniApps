@@ -73,14 +73,12 @@ final class TicTacToeViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    
     private func setupViews() {
         view.backgroundColor = .systemGray6
         title = "TicTacToe"
         view.addSubview(vStack)
         view.addSubview(turnLabel)
         navigationItem.leftBarButtonItem = backBarButtonItem
-
     }
     
     private func setupConstraints() {
@@ -107,7 +105,6 @@ final class TicTacToeViewController: UIViewController {
     }
     
     private func resultAlert(title: String) {
-        
         let message = "\nNoughts " + String(noughtsScore) + "\n\nCrosses " + String(crossesScore)
         let ac = UIAlertController(title: title,
                                    message: message,
@@ -210,4 +207,3 @@ private extension TicTacToeViewController {
         return button.title(for: .normal) == symbol
     }
 }
-

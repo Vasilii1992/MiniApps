@@ -1,9 +1,3 @@
-//
-//  WeatherViewController.swift
-//  MiniApps
-//
-//  Created by Василий Тихонов on 06.09.2024.
-//
 
 import UIKit
 import SDWebImage
@@ -30,7 +24,7 @@ final class WeatherViewController: UIViewController {
         return textField
     }()
     
-    var weatherIcon: UIImageView = {
+   private var weatherIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -53,7 +47,17 @@ final class WeatherViewController: UIViewController {
         setupViews()
         setupConstraints()
         cityTextField.delegate = self
-        fetchData(for: "Дубай")
+        fetchFirstData()
+    }
+    
+    private func fetchFirstData() {
+        if Reachability.isConnectedToNetwork() {
+            fetchData(for: "Дубай")
+        } else {
+            activityIndicator.stopAnimating()
+            errorLabel.isHidden = false
+            errorLabel.text = "Нет подключения к интернету"
+        }
     }
     
     private func setupViews() {
@@ -111,8 +115,6 @@ final class WeatherViewController: UIViewController {
             errorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             errorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
 
-
-            
         ])
     }
     
@@ -139,44 +141,67 @@ final class WeatherViewController: UIViewController {
                     self.errorLabel.text = error.localizedDescription
                     print("Ошибка: \(error.localizedDescription)")
                 } else if let weather = weather {
-                    self.errorLabel.isHidden = true
-                    self.tempLabel.text = "Температура: \(weather.main.temp)°C"
-                    self.feelsLikeLabel.text = "Ощущается как: \(weather.main.feelsLike)°C"
-                    if let weatherInfo = weather.weather?.first {
-                        self.descriptionLabel.text = weatherInfo.description?.capitalized
-                        if let icon = weatherInfo.icon {
-                            let iconURL = URL(string: "https://openweathermap.org/img/wn/\(icon)@2x.png")
-                            self.weatherIcon.sd_setImage(with: iconURL, completed: nil)
-                        }
-                    }
+                    self.updateUI(with: weather, city: city)
+                } else {
+                    self.clearWeatherData()
+                    self.errorLabel.isHidden = false
+                    self.errorLabel.text = "Не удалось загрузить данные"
                 }
             }
         }
     }
 
+    private func updateUI(with weather: Weather, city: String) {
+        errorLabel.isHidden = true
+        cityNameLabel.text = city
+        tempLabel.text = "Температура: \(weather.main.temp)°C"
+        feelsLikeLabel.text = "Ощущается как: \(weather.main.feelsLike)°C"
+        if let weatherInfo = weather.weather?.first {
+            descriptionLabel.text = weatherInfo.description?.capitalized
+            if let icon = weatherInfo.icon {
+                let iconURL = URL(string: "https://openweathermap.org/img/wn/\(icon)@2x.png")
+                weatherIcon.sd_setImage(with: iconURL, completed: nil)
+            }
+        }
+    }
+
+    private func handleNetworkError(_ message: String) {
+        activityIndicator.stopAnimating()
+        clearWeatherData()
+        errorLabel.isHidden = false
+        errorLabel.text = message
+    }
 }
 
 extension WeatherViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-           let currentText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
-           
-           searchTimer?.invalidate()
-           if currentText.isEmpty {
-               activityIndicator.stopAnimating()
-               clearWeatherData()
-               return true
-           }
-           activityIndicator.startAnimating()
+        let currentText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
+        
+        searchTimer?.invalidate()
+        
+        if currentText.trimmingCharacters(in: .whitespaces).isEmpty {
+            activityIndicator.stopAnimating()
+            clearWeatherData()
+            errorLabel.isHidden = true
+            return true
+        }
+        
+        activityIndicator.startAnimating()
+        
         searchTimer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { [weak self] _ in
-               guard let self = self, !currentText.isEmpty else { return }
-               self.fetchData(for: currentText)
-            self.cityNameLabel.text = currentText
-           })
-           
-           return true
-       }
-    
+            guard let self = self else { return }
+            
+            if Reachability.isConnectedToNetwork() {
+                self.fetchData(for: currentText)
+            } else {
+                self.handleNetworkError("Нет подключения к интернету")
+            }
+        })
+        
+        return true
+    }
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

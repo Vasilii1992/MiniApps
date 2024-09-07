@@ -1,9 +1,3 @@
-//
-//  BoardViewController.swift
-//  MiniApps
-//
-//  Created by Василий Тихонов on 04.09.2024.
-//
 
 import UIKit
 
@@ -37,8 +31,7 @@ final class BoardViewController: UIViewController {
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 35),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -35),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
@@ -75,12 +68,6 @@ extension BoardViewController: UICollectionViewDelegate, UICollectionViewDataSou
         return cell
         
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //
-    }
-    
-    
 }
 
 extension BoardViewController: UICollectionViewDelegateFlowLayout {

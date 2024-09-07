@@ -44,9 +44,10 @@
 		6B585DDD2C89C127006BDA02 /* minecraft.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B585DDC2C89C127006BDA02 /* minecraft.ttf */; };
 		6B585DE12C89C26D006BDA02 /* UILabel.ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DE02C89C26D006BDA02 /* UILabel.ext.swift */; };
 		6B585DE52C89C2DB006BDA02 /* IntuitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DE42C89C2DB006BDA02 /* IntuitionViewController.swift */; };
-		6B585DE82C89C307006BDA02 /* GameUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DE72C89C307006BDA02 /* GameUI.swift */; };
+		6B585DE82C89C307006BDA02 /* IntuitionUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DE72C89C307006BDA02 /* IntuitionUI.swift */; };
 		6B585DEB2C89C365006BDA02 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DEA2C89C365006BDA02 /* GameEngine.swift */; };
 		6B585DEE2C89C381006BDA02 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DED2C89C381006BDA02 /* Coordinator.swift */; };
+		6B8CC11A2C8C908700B94BD3 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8CC1192C8C908700B94BD3 /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,9 +88,10 @@
 		6B585DDC2C89C127006BDA02 /* minecraft.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = minecraft.ttf; sourceTree = "<group>"; };
 		6B585DE02C89C26D006BDA02 /* UILabel.ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.ext.swift; sourceTree = "<group>"; };
 		6B585DE42C89C2DB006BDA02 /* IntuitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntuitionViewController.swift; sourceTree = "<group>"; };
-		6B585DE72C89C307006BDA02 /* GameUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUI.swift; sourceTree = "<group>"; };
+		6B585DE72C89C307006BDA02 /* IntuitionUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntuitionUI.swift; sourceTree = "<group>"; };
 		6B585DEA2C89C365006BDA02 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		6B585DED2C89C381006BDA02 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		6B8CC1192C8C908700B94BD3 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 			children = (
 				6B54791B2C8B97AF00F8A2DE /* ApiManager.swift */,
 				6B54791D2C8B97CD00F8A2DE /* WeatherError.swift */,
+				6B8CC1192C8C908700B94BD3 /* Reachability.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -370,7 +373,7 @@
 		6B585DE62C89C2F6006BDA02 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				6B585DE72C89C307006BDA02 /* GameUI.swift */,
+				6B585DE72C89C307006BDA02 /* IntuitionUI.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -483,7 +486,8 @@
 				6B585DE52C89C2DB006BDA02 /* IntuitionViewController.swift in Sources */,
 				6B5479312C8BA2AC00F8A2DE /* Coin.swift in Sources */,
 				6B5479362C8BA2FC00F8A2DE /* HTTP.swift in Sources */,
-				6B585DE82C89C307006BDA02 /* GameUI.swift in Sources */,
+				6B8CC11A2C8C908700B94BD3 /* Reachability.swift in Sources */,
+				6B585DE82C89C307006BDA02 /* IntuitionUI.swift in Sources */,
 				6B4120C42C88C8D700AF1BA6 /* MiniAppCell.swift in Sources */,
 				6B4120BF2C88C82F00AF1BA6 /* MainTabBarController.swift in Sources */,
 				6B54791C2C8B97AF00F8A2DE /* ApiManager.swift in Sources */,
@@ -652,8 +656,9 @@
 				INFOPLIST_FILE = MiniApps/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -683,8 +688,9 @@
 				INFOPLIST_FILE = MiniApps/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

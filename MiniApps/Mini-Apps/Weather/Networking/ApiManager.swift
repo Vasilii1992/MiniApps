@@ -1,9 +1,3 @@
-//
-//  ApiManager.swift
-//  MiniApps
-//
-//  Created by Василий Тихонов on 06.09.2024.
-//
 
 import Foundation
 
@@ -18,7 +12,7 @@ final class APIManager {
             return
         }
         
-        let request = URLRequest(url: url)
+        let request = URLRequest(url: url, timeoutInterval: 15)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(nil, .networkError(error))
@@ -34,7 +28,6 @@ final class APIManager {
                 completion(nil, .decodingError)
                 return
             }
-            
             completion(weather, nil)
         }
         task.resume()
