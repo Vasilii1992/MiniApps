@@ -1,4 +1,5 @@
 import UIKit
+import TicTacToe
 
 protocol GameSelectionDelegate: AnyObject {
     func didSelectGame(index: Int)

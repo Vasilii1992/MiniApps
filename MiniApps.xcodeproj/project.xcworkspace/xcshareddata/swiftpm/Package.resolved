@@ -1,5 +1,5 @@
 {
-  "originHash" : "990602f943d142d26b1a5421abe2a243e2e1077d090e31e151c33e3ec768723e",
+  "originHash" : "efc972c0629bbe236ab51ed22a62af71708de83e1a6f9fb4905a3d0f434a411d",
   "pins" : [
     {
       "identity" : "sdwebimage",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "8a1be70a625683bc04d6903e2935bf23f3c6d609",
         "version" : "5.19.7"
+      }
+    },
+    {
+      "identity" : "tictactoe",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Vasilii1992/TicTacToe.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "eb9dc8826ecf3c6320ba7fe0951a5517fa254a0d"
       }
     }
   ],

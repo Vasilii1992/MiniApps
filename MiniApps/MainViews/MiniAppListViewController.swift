@@ -1,5 +1,6 @@
 
 import UIKit
+import TicTacToe
 
 final class MiniAppListViewController: UIViewController {
     
