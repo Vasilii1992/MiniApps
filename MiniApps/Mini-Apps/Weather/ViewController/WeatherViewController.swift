@@ -7,7 +7,6 @@ final class WeatherViewController: UIViewController {
     private let mainLabel: UILabel = WeatherLabel(labelText: "Введите город", fontSize: 18, weight: .heavy)
     private var cityNameLabel: UILabel = WeatherLabel(labelText: "Дубай", color: .darkGray, fontSize: 18, weight: .medium)
     private var tempLabel: UILabel = WeatherLabel(fontSize: 20, weight: .semibold)
-    private var feelsLikeLabel: UILabel = WeatherLabel(color: .gray, fontSize: 16, weight: .regular)
     private var descriptionLabel: UILabel = WeatherLabel(color: .darkGray, fontSize: 18, weight: .medium)
     private var errorLabel: UILabel = WeatherLabel(labelText: "Некорректно введен город", color: .systemRed, fontSize: 14, weight: .semibold, labelIsHidden: true)
     
@@ -24,7 +23,7 @@ final class WeatherViewController: UIViewController {
         return textField
     }()
     
-   private var weatherIcon: UIImageView = {
+    private var weatherIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -32,7 +31,7 @@ final class WeatherViewController: UIViewController {
     }()
     
     private var activityIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .large)
+        let indicator = UIActivityIndicatorView(style: .medium)
         indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.hidesWhenStopped = true
         return indicator
@@ -41,6 +40,7 @@ final class WeatherViewController: UIViewController {
     private lazy var backBarButtonItem = MiniAppListViewController.createBackBarButtonItem(target: self, action: #selector(backBarButtonItemTapped))
     
     private var searchTimer: Timer?
+    private let apiManager = APIManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +66,6 @@ final class WeatherViewController: UIViewController {
         navigationItem.leftBarButtonItem = backBarButtonItem
         view.addSubview(mainLabel)
         view.addSubview(tempLabel)
-        view.addSubview(feelsLikeLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(weatherIcon)
         view.addSubview(cityTextField)
@@ -85,10 +84,13 @@ final class WeatherViewController: UIViewController {
             mainLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             mainLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             
-            
-            cityTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             cityTextField.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 20),
+            cityTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             cityTextField.widthAnchor.constraint(equalToConstant: view.bounds.width - 80),
+
+            activityIndicator.leadingAnchor.constraint(equalTo: cityTextField.trailingAnchor, constant: 10),
+            activityIndicator.centerYAnchor.constraint(equalTo: cityTextField.centerYAnchor),
+            
             
             cityNameLabel.topAnchor.constraint(equalTo: cityTextField.bottomAnchor, constant: 20),
             cityNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -96,22 +98,16 @@ final class WeatherViewController: UIViewController {
             tempLabel.topAnchor.constraint(equalTo: cityNameLabel.bottomAnchor, constant: 20),
             tempLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            feelsLikeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            feelsLikeLabel.topAnchor.constraint(equalTo: tempLabel.bottomAnchor, constant: 10),
-            
             descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            descriptionLabel.topAnchor.constraint(equalTo: feelsLikeLabel.bottomAnchor, constant: 10),
+            descriptionLabel.topAnchor.constraint(equalTo: tempLabel.bottomAnchor, constant: 10),
             
             weatherIcon.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            weatherIcon.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
-            weatherIcon.widthAnchor.constraint(equalToConstant: 100),
-            weatherIcon.heightAnchor.constraint(equalToConstant: 100),
-            
-            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            weatherIcon.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10),
+            weatherIcon.widthAnchor.constraint(equalToConstant: 150),
+            weatherIcon.heightAnchor.constraint(equalToConstant: 150),
             
             errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            errorLabel.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor, constant: 10),
+            errorLabel.topAnchor.constraint(equalTo: weatherIcon.bottomAnchor, constant: 10),
             errorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             errorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
 
@@ -120,7 +116,6 @@ final class WeatherViewController: UIViewController {
     
     private func clearWeatherData() {
         tempLabel.text = ""
-        feelsLikeLabel.text = ""
         descriptionLabel.text = ""
         weatherIcon.image = nil
         cityNameLabel.text = ""
@@ -130,38 +125,60 @@ final class WeatherViewController: UIViewController {
         activityIndicator.startAnimating()
         errorLabel.isHidden = true
 
-        APIManager().load(city: city) { [weak self] weather, error in
+        apiManager.geocode(city: city) { [weak self] geocodingResult, error in
             guard let self = self else { return }
-            DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
-
-                if let error = error {
+            if let error = error {
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
                     self.clearWeatherData()
                     self.errorLabel.isHidden = false
                     self.errorLabel.text = error.localizedDescription
-                    print("Ошибка: \(error.localizedDescription)")
-                } else if let weather = weather {
-                    self.updateUI(with: weather, city: city)
-                } else {
+                    print("Ошибка геокодирования: \(error.localizedDescription)")
+                }
+                return
+            }
+            
+            guard let result = geocodingResult else {
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
                     self.clearWeatherData()
                     self.errorLabel.isHidden = false
-                    self.errorLabel.text = "Не удалось загрузить данные"
+                    self.errorLabel.text = "Город не найден"
+                }
+                return
+            }
+            
+            self.apiManager.fetchWeather(latitude: result.latitude, longitude: result.longitude) { weather, weatherError in
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    
+                    if let weatherError = weatherError {
+                        self.clearWeatherData()
+                        self.errorLabel.isHidden = false
+                        self.errorLabel.text = weatherError.localizedDescription
+                        print("Ошибка получения погоды: \(weatherError.localizedDescription)")
+                    } else if let weather = weather {
+                        self.updateUI(with: weather, city: result.name)
+                    } else {
+                        self.clearWeatherData()
+                        self.errorLabel.isHidden = false
+                        self.errorLabel.text = "Не удалось загрузить данные"
+                    }
                 }
             }
         }
     }
 
+
     private func updateUI(with weather: Weather, city: String) {
         errorLabel.isHidden = true
         cityNameLabel.text = city
-        tempLabel.text = "Температура: \(weather.main.temp)°C"
-        feelsLikeLabel.text = "Ощущается как: \(weather.main.feelsLike)°C"
-        if let weatherInfo = weather.weather?.first {
-            descriptionLabel.text = weatherInfo.description?.capitalized
-            if let icon = weatherInfo.icon {
-                let iconURL = URL(string: "https://openweathermap.org/img/wn/\(icon)@2x.png")
-                weatherIcon.sd_setImage(with: iconURL, completed: nil)
-            }
+        tempLabel.text = "Температура: \(weather.temperature)°C"
+        descriptionLabel.text = weather.description.capitalized
+        let iconCode = apiManager.mapWeatherCodeToOpenWeatherIcon(code: weather.weatherCode)
+        
+        if let iconURL = URL(string: "https://openweathermap.org/img/wn/\(iconCode)@2x.png") {
+            weatherIcon.sd_setImage(with: iconURL, completed: nil)
         }
     }
 
@@ -207,4 +224,3 @@ extension WeatherViewController: UITextFieldDelegate {
         return true
     }
 }
-

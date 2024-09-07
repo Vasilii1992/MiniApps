@@ -1,26 +1,28 @@
-//
-//  Weather.swift
 
 import Foundation
 
-struct Weather: Codable {
-    let main: Main
-    let weather: [WeatherElement]?
-    
+struct GeocodingResponse: Codable {
+    let results: [GeocodingResult]
 }
 
-struct Main: Codable {
-    let temp: Double
-    let feelsLike: Double
-    
-    enum CodingKeys: String, CodingKey {
-        case temp
-        case feelsLike = "feels_like"
-    }
+struct GeocodingResult: Codable {
+    let name: String
+    let latitude: Double
+    let longitude: Double
 }
 
-struct WeatherElement: Codable {
-    let id: Int?
-    let description: String?
-    let icon: String?
+struct WeatherResponse: Codable {
+    let current_weather: CurrentWeather
+}
+
+struct CurrentWeather: Codable {
+    let temperature: Double
+    let weathercode: Int
+}
+
+struct Weather {
+    let temperature: Double
+    let description: String
+    let icon: String
+    let weatherCode: Int
 }

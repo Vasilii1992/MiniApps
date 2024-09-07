@@ -63,11 +63,12 @@ extension InteractiveAppListViewController: UICollectionViewDelegate, UICollecti
         }
         
         if let miniAppVC = miniAppControllers[indexPath.row] {
-            cell.configure(with: miniAppVC, parentViewController: self)
+            cell.configure(with: miniAppVC, appName: miniApp.name, parentViewController: self)
         }
         
         return cell
     }
+
 }
 
 extension InteractiveAppListViewController:  UICollectionViewDelegateFlowLayout {
