@@ -8,9 +8,8 @@
 import UIKit
 import SDWebImage
 
-class CoinCell: UITableViewCell {
+final class CoinCell: UITableViewCell {
     static let identifire = "CoinCell"
-    
     
     private(set) var coin: Coin!
     
@@ -19,6 +18,7 @@ class CoinCell: UITableViewCell {
         image.contentMode = .scaleAspectFit
         image.image = UIImage(systemName: "questionmark")
         image.tintColor = .black
+        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
@@ -28,13 +28,25 @@ class CoinCell: UITableViewCell {
         label.textAlignment = .left
         label.font = .systemFont(ofSize: 22,weight: .semibold)
         label.text = "Error"
+        label.translatesAutoresizingMaskIntoConstraints = false
         
+        return label
+    }()
+    
+    private let coinPrice: UILabel = {
+        let label = UILabel()
+        label.textColor = .label
+        label.textAlignment = .right
+        label.font = .systemFont(ofSize: 18, weight: .regular)
+        label.text = "$0.00"
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupUI()
+        setupViews()
+        setupConstraints()
         backgroundColor = .clear
     }
     
@@ -45,7 +57,7 @@ class CoinCell: UITableViewCell {
     func configure(with coin: Coin) {
         self.coin = coin
         coinName.text = coin.name
-        
+        coinPrice.text = String(format: "$%.2f", coin.pricingData.USD.price)
         self.coinLogo.sd_setImage(with: coin.logoURL)
     }
     
@@ -53,13 +65,17 @@ class CoinCell: UITableViewCell {
         super.prepareForReuse()
         coinName.text = nil
         coinLogo.image = nil
+        coinPrice.text = nil
     }
     
-    private func setupUI() {
+    private func setupViews() {
         contentView.addSubview(coinLogo)
         contentView.addSubview(coinName)
-        coinLogo.translatesAutoresizingMaskIntoConstraints = false
-        coinName.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(coinPrice)
+        
+    }
+    
+    private func setupConstraints() {
         
         NSLayoutConstraint.activate([
             coinLogo.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -68,7 +84,11 @@ class CoinCell: UITableViewCell {
             coinLogo.heightAnchor.constraint(equalTo: contentView.heightAnchor,multiplier: 0.75),
             
             coinName.leadingAnchor.constraint(equalTo: coinLogo.trailingAnchor,constant: 16),
-            coinName.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            coinName.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            coinName.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5),
+            
+            coinPrice.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
+            coinPrice.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 
         ])
     }

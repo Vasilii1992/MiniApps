@@ -1,13 +1,7 @@
-//
-//  HomeController.swift
-//  MiniApps
-//
-//  Created by Василий Тихонов on 06.09.2024.
-//
 
 import UIKit
 
-class CryptoController: UIViewController {
+final class CryptoController: UIViewController {
     
     private let viewModel: CryptoControllerViewModel
     
@@ -19,11 +13,19 @@ class CryptoController: UIViewController {
         return searchBar
     }()
     
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
+    
     private let tableView: UITableView = {
-       let table = UITableView()
+        let table = UITableView()
         table.backgroundColor = .systemGray6
         table.register(CoinCell.self, forCellReuseIdentifier: CoinCell.identifire)
         table.translatesAutoresizingMaskIntoConstraints = false
+        table.isHidden = true
         return table
     }()
     
@@ -41,23 +43,36 @@ class CryptoController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearchBar()
-        setupUI()
+        setupViews()
+        setupConstraints()
         
         tableView.delegate = self
         tableView.dataSource = self
         
-        self.viewModel.onCoinsUpdated = { [weak self] in
+        coinsUpdate()
+        errorMessage()
+        
+        activityIndicator.startAnimating()
+        viewModel.fetchCoins()
+    }
+    
+    private func coinsUpdate() {
+        viewModel.onCoinsUpdated = { [weak self] in
             DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+                self?.tableView.isHidden = false
                 self?.tableView.reloadData()
             }
         }
-        
-        self.viewModel.onErrorMessage = { [weak self] error in
-            let alert = UIAlertController(title: nil, message: nil,
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
-            
+    }
+    
+    private func errorMessage() {
+        viewModel.onErrorMessage = { [weak self] error in
             DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+                let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+                
                 switch error {
                 case .serverError(let serverError):
                     alert.title = "Server Error \(serverError.errorCode)"
@@ -74,19 +89,23 @@ class CryptoController: UIViewController {
         }
     }
 
-    private func setupUI() {
+    private func setupViews() {
         title = "Crypto"
         view.backgroundColor = .systemGray6
         navigationItem.leftBarButtonItem = backBarButtonItem
-
-        
         view.addSubview(searchBar)
         view.addSubview(tableView)
-        
+        view.addSubview(activityIndicator)
+    }
+    
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor), // Центрируем индикатор
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
             tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -114,6 +133,11 @@ extension CryptoController: UISearchBarDelegate {
         searchBar.text = ""
         viewModel.updateSearchController(searchBarText: "")
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
 }
 
 extension CryptoController: UITableViewDelegate, UITableViewDataSource {

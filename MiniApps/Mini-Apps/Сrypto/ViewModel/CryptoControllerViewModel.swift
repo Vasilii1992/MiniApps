@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CryptoControllerViewModel {
+final class CryptoControllerViewModel {
     
     var onCoinsUpdated: (() -> Void)?
     var onErrorMessage: ((CoinServiceError) -> Void)?
@@ -30,21 +30,21 @@ class CryptoControllerViewModel {
         self.fetchCoins()
     }
     
-    public func fetchCoins() {
+     func fetchCoins() {
         let endpoint = Endpoint.fetchCoins()
         
         CoinService.fetchCoins(with: endpoint) { [weak self] result in
             switch result {
             case .success(let coins):
                 self?.allCoins = coins
-                print("DEBUG PRINT:", "\(coins.count) coins fetched.")
+                print("\(coins.count) coins fetched.")
             case .failure(let error):
                 self?.onErrorMessage?(error)
             }
         }
     }
 
-    public func updateSearchController(searchBarText: String?) {
+     func updateSearchController(searchBarText: String?) {
         let searchText = searchBarText?.lowercased() ?? ""
         
         if searchText.isEmpty {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CoinService {
+final class CoinService {
     
     static func fetchCoins(with endpoint: Endpoint, completion: @escaping (Result<[Coin], CoinServiceError>) -> Void) {
         

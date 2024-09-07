@@ -16,13 +16,10 @@ enum Endpoint {
         guard let url = self.url else { return nil }
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
-        request.httpBody = httpBody
         request.addValues(for: self)
         
         return request
     }
-    
-    
     
     private var url: URL? {
         var components = URLComponents()
@@ -47,27 +44,17 @@ enum Endpoint {
             return [
             URLQueryItem(name: "limit", value: "150"),
             URLQueryItem(name: "sort", value: "market_cap"),
-            URLQueryItem(name: "convert", value: "CAD"),
+            URLQueryItem(name: "convert", value: "USD"), 
             URLQueryItem(name: "aux", value: "cmc_rank,max_supply,circulating_supply,total_supply")
             ]
         }
     }
-    
-    
     
     private var httpMethod: String {
         
         switch self {
         case .fetchCoins:
             return HTTP.Method.get.rawValue
-        }
-    }
-    
-    // если бы я отправлял данные
-    private var httpBody: Data? {
-        switch self {
-        case .fetchCoins:
-            return nil
         }
     }
 }
