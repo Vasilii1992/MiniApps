@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameViewController: UIViewController {
+final class IntuitionViewController: UIViewController {
 
     lazy var coordinator = {
         return Coordinator(controller: self)

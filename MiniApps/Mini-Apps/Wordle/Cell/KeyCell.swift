@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KeyCell: UICollectionViewCell {
+final class KeyCell: UICollectionViewCell {
     static let identifier = "KeyCell"
     
     let label: UILabel = {

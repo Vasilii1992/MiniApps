@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MiniAppCell: UICollectionViewCell {
+final class MiniAppCell: UICollectionViewCell {
     static let identifier = "MiniAppCell"
     
     private let titleLabel: UILabel = {

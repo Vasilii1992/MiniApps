@@ -7,7 +7,7 @@
 
 import Foundation
 
-class APIManager {
+final class APIManager {
     
     private let apiKey = "ed731eb179561dee75d942a3434116a2"
     

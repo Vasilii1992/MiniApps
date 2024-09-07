@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MiniAppListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+final class MiniAppListViewController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -30,14 +30,14 @@ class MiniAppListViewController: UIViewController, UICollectionViewDelegate, UIC
     ]
     
     private let numberOfCells = 10
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Список приложений"
         navigationController?.navigationBar.prefersLargeTitles = true
         setupViews()
         setupConstraints()
-
+        
     }
     
     private func setupViews() {
@@ -53,14 +53,17 @@ class MiniAppListViewController: UIViewController, UICollectionViewDelegate, UIC
         ])
     }
     
-   static func createBackBarButtonItem(target: Any?, action: Selector) -> UIBarButtonItem {
-         let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"),
-                                             style: .plain,
-                                             target: target,
-                                             action: action)
-         barButtonItem.tintColor = .black
-         return barButtonItem
-     }
+    static func createBackBarButtonItem(target: Any?, action: Selector) -> UIBarButtonItem {
+        let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"),
+                                            style: .plain,
+                                            target: target,
+                                            action: action)
+        barButtonItem.tintColor = .black
+        return barButtonItem
+    }
+}
+    
+extension MiniAppListViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfCells
@@ -75,9 +78,9 @@ class MiniAppListViewController: UIViewController, UICollectionViewDelegate, UIC
         return cell
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.size.width, height: view.frame.size.height / 8)
-    }
+}
+
+extension MiniAppListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let appName = appNames[indexPath.row % appNames.count]
@@ -88,7 +91,7 @@ class MiniAppListViewController: UIViewController, UICollectionViewDelegate, UIC
             let wordleVC = WordleViewController()
             navigationController?.pushViewController(wordleVC, animated: true)
         } else if appName.name == "Intuition" {
-            let intuitionVC = GameViewController()
+            let intuitionVC = IntuitionViewController()
             navigationController?.pushViewController(intuitionVC, animated: true)
         } else if appName.name == "Weather" {
             let weatherVC = WeatherViewController()
@@ -99,5 +102,12 @@ class MiniAppListViewController: UIViewController, UICollectionViewDelegate, UIC
             navigationController?.pushViewController(cryptoVC, animated: true)
 
         }
+    }    
+}
+
+extension MiniAppListViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.size.width, height: view.frame.size.height / 8)
     }
 }

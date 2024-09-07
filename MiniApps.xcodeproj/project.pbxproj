@@ -43,7 +43,7 @@
 		6B5479472C8BA4BB00F8A2DE /* CryptoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5479462C8BA4BB00F8A2DE /* CryptoController.swift */; };
 		6B585DDD2C89C127006BDA02 /* minecraft.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B585DDC2C89C127006BDA02 /* minecraft.ttf */; };
 		6B585DE12C89C26D006BDA02 /* UILabel.ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DE02C89C26D006BDA02 /* UILabel.ext.swift */; };
-		6B585DE52C89C2DB006BDA02 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DE42C89C2DB006BDA02 /* GameViewController.swift */; };
+		6B585DE52C89C2DB006BDA02 /* IntuitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DE42C89C2DB006BDA02 /* IntuitionViewController.swift */; };
 		6B585DE82C89C307006BDA02 /* GameUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DE72C89C307006BDA02 /* GameUI.swift */; };
 		6B585DEB2C89C365006BDA02 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DEA2C89C365006BDA02 /* GameEngine.swift */; };
 		6B585DEE2C89C381006BDA02 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DED2C89C381006BDA02 /* Coordinator.swift */; };
@@ -86,7 +86,7 @@
 		6B5479462C8BA4BB00F8A2DE /* CryptoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoController.swift; sourceTree = "<group>"; };
 		6B585DDC2C89C127006BDA02 /* minecraft.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = minecraft.ttf; sourceTree = "<group>"; };
 		6B585DE02C89C26D006BDA02 /* UILabel.ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.ext.swift; sourceTree = "<group>"; };
-		6B585DE42C89C2DB006BDA02 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		6B585DE42C89C2DB006BDA02 /* IntuitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntuitionViewController.swift; sourceTree = "<group>"; };
 		6B585DE72C89C307006BDA02 /* GameUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUI.swift; sourceTree = "<group>"; };
 		6B585DEA2C89C365006BDA02 /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		6B585DED2C89C381006BDA02 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -354,7 +354,7 @@
 		6B585DE22C89C2AF006BDA02 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6B585DE42C89C2DB006BDA02 /* GameViewController.swift */,
+				6B585DE42C89C2DB006BDA02 /* IntuitionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -480,7 +480,7 @@
 				6B4120C62C88C92900AF1BA6 /* InteractiveAppCell.swift in Sources */,
 				6B5479472C8BA4BB00F8A2DE /* CryptoController.swift in Sources */,
 				6B4120CE2C89181A00AF1BA6 /* GameSelectionViewController.swift in Sources */,
-				6B585DE52C89C2DB006BDA02 /* GameViewController.swift in Sources */,
+				6B585DE52C89C2DB006BDA02 /* IntuitionViewController.swift in Sources */,
 				6B5479312C8BA2AC00F8A2DE /* Coin.swift in Sources */,
 				6B5479362C8BA2FC00F8A2DE /* HTTP.swift in Sources */,
 				6B585DE82C89C307006BDA02 /* GameUI.swift in Sources */,

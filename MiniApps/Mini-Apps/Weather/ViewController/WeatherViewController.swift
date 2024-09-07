@@ -8,9 +8,10 @@
 import UIKit
 import SDWebImage
 
-class WeatherViewController: UIViewController {
+final class WeatherViewController: UIViewController {
     
     private let mainLabel: UILabel = WeatherLabel(labelText: "Введите город", fontSize: 18, weight: .heavy)
+    private var cityNameLabel: UILabel = WeatherLabel(labelText: "Дубай", color: .darkGray, fontSize: 18, weight: .medium)
     private var tempLabel: UILabel = WeatherLabel(fontSize: 20, weight: .semibold)
     private var feelsLikeLabel: UILabel = WeatherLabel(color: .gray, fontSize: 16, weight: .regular)
     private var descriptionLabel: UILabel = WeatherLabel(color: .darkGray, fontSize: 18, weight: .medium)
@@ -52,6 +53,7 @@ class WeatherViewController: UIViewController {
         setupViews()
         setupConstraints()
         cityTextField.delegate = self
+        fetchData(for: "Дубай")
     }
     
     private func setupViews() {
@@ -66,6 +68,7 @@ class WeatherViewController: UIViewController {
         view.addSubview(cityTextField)
         view.addSubview(activityIndicator)
         view.addSubview(errorLabel)
+        view.addSubview(cityNameLabel)
     }
     
     @objc func backBarButtonItemTapped() {
@@ -83,7 +86,10 @@ class WeatherViewController: UIViewController {
             cityTextField.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 20),
             cityTextField.widthAnchor.constraint(equalToConstant: view.bounds.width - 80),
             
-            tempLabel.topAnchor.constraint(equalTo: cityTextField.bottomAnchor, constant: 20),
+            cityNameLabel.topAnchor.constraint(equalTo: cityTextField.bottomAnchor, constant: 20),
+            cityNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            tempLabel.topAnchor.constraint(equalTo: cityNameLabel.bottomAnchor, constant: 20),
             tempLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             feelsLikeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -115,6 +121,7 @@ class WeatherViewController: UIViewController {
         feelsLikeLabel.text = ""
         descriptionLabel.text = ""
         weatherIcon.image = nil
+        cityNameLabel.text = ""
     }
 
     private func fetchData(for city: String) {
@@ -164,6 +171,7 @@ extension WeatherViewController: UITextFieldDelegate {
         searchTimer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { [weak self] _ in
                guard let self = self, !currentText.isEmpty else { return }
                self.fetchData(for: currentText)
+            self.cityNameLabel.text = currentText
            })
            
            return true

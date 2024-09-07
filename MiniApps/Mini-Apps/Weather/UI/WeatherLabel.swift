@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WeatherLabel: UILabel {
+final class WeatherLabel: UILabel {
     
     var labelText: String
     var color: UIColor

@@ -11,7 +11,7 @@ protocol KeyboardViewControllerDelegate: AnyObject {
     func keyboardViewController(_ vc: KeyboardViewController, didTapKey letter: Character)
 }
 
-class KeyboardViewController: UIViewController {
+final class KeyboardViewController: UIViewController {
     
     weak var delegate: KeyboardViewControllerDelegate?
     

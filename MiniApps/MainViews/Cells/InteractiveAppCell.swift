@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InteractiveAppCell: UICollectionViewCell {
+final class InteractiveAppCell: UICollectionViewCell {
     static let identifier = "InteractiveAppCell"
     
     private let containerView: UIView = {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameSelectionViewController: UITableViewController {
+final class GameSelectionViewController: UITableViewController {
 
     let games = ["TicTacToe", "Wordle", "Intuition", "Weather","Crypto"]
     

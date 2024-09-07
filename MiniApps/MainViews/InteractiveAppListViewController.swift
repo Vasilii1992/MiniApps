@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InteractiveAppListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+final class InteractiveAppListViewController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -22,7 +22,7 @@ class InteractiveAppListViewController: UIViewController, UICollectionViewDelega
     }()
     
     private let miniApps: [MiniAppForInteractive] = [
-        MiniAppForInteractive(name: "Game", viewControllerFactory: { GameViewController() }),
+        MiniAppForInteractive(name: "Intuition", viewControllerFactory: { IntuitionViewController() }),
         MiniAppForInteractive(name: "Crypto", viewControllerFactory: { CryptoController() }),
         MiniAppForInteractive(name: "Weather", viewControllerFactory: { WeatherViewController()}),
         MiniAppForInteractive(name: "Wordle", viewControllerFactory: { WordleViewController() }),
@@ -51,7 +51,10 @@ class InteractiveAppListViewController: UIViewController, UICollectionViewDelega
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+}
 
+extension InteractiveAppListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfCells
     }
@@ -71,7 +74,10 @@ class InteractiveAppListViewController: UIViewController, UICollectionViewDelega
         
         return cell
     }
+}
 
+extension InteractiveAppListViewController:  UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.size.width, height: view.frame.size.height / 2)
     }

@@ -11,11 +11,11 @@ protocol GameSelectionDelegate: AnyObject {
     func didSelectGame(index: Int)
 }
 
-class FullScreenAppViewController: UIViewController {
+final class FullScreenAppViewController: UIViewController {
     
     private var ticTacToeVC: TicTacToeViewController?
     private var wordleVC: WordleViewController?
-    private var intuitionVC: GameViewController?
+    private var intuitionVC: IntuitionViewController?
     private var weatherVC: WeatherViewController?
     private var cryptoVC: CryptoController?
 
@@ -60,7 +60,7 @@ class FullScreenAppViewController: UIViewController {
             ticTacToeVC.view.frame = view.bounds
             view.addSubview(ticTacToeVC.view)
             ticTacToeVC.didMove(toParent: self)
-            title = "TicTacToe"
+            navigationItem.title = "TicTacToe"
         } else if index == 1 {
             wordleVC = WordleViewController()
             guard let wordleVC = wordleVC else { return }
@@ -68,15 +68,15 @@ class FullScreenAppViewController: UIViewController {
             wordleVC.view.frame = view.bounds
             view.addSubview(wordleVC.view)
             wordleVC.didMove(toParent: self)
-            title = "Wordle"
+            navigationItem.title = "Wordle"
         } else if index == 2 {
-            intuitionVC = GameViewController()
+            intuitionVC = IntuitionViewController()
             guard let intuitionVC = intuitionVC else { return }
             addChild(intuitionVC)
             intuitionVC.view.frame = view.bounds
             view.addSubview(intuitionVC.view)
             intuitionVC.didMove(toParent: self)
-            title = "Intuition"
+            navigationItem.title = "Intuition"
         } else if index == 3 {
             weatherVC = WeatherViewController()
             guard let weatherVC = weatherVC else { return }
@@ -84,7 +84,7 @@ class FullScreenAppViewController: UIViewController {
             weatherVC.view.frame = view.bounds
             view.addSubview(weatherVC.view)
             weatherVC.didMove(toParent: self)
-            title = "Weather"
+            navigationItem.title = "Weather"
         } else if index == 4 {
             cryptoVC = CryptoController()
             guard let cryptoVC = cryptoVC else { return }
@@ -92,7 +92,7 @@ class FullScreenAppViewController: UIViewController {
             cryptoVC.view.frame = view.bounds
             view.addSubview(cryptoVC.view)
             cryptoVC.didMove(toParent: self)
-            title = "Crypto"
+            navigationItem.title = "Crypto"
         }
     }
     

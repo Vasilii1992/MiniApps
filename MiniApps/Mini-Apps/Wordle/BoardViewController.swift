@@ -12,7 +12,7 @@ protocol BoardViewControllerDataSource: AnyObject {
     func boxColor(at indexPath: IndexPath) -> UIColor?
 }
 
-class BoardViewController: UIViewController {
+final class BoardViewController: UIViewController {
     
     weak var datasourse: BoardViewControllerDataSource?
     

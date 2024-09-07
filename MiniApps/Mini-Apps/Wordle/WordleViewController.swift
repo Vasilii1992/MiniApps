@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WordleViewController: UIViewController {
+final class WordleViewController: UIViewController {
     
     let anwsers = [
     "after", "later", "bloke", "there", "ultra"
