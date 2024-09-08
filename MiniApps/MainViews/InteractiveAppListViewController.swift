@@ -1,6 +1,7 @@
 
 import UIKit
 import TicTacToe
+import WordleGame
 
 final class InteractiveAppListViewController: UIViewController {
     
@@ -33,6 +34,17 @@ final class InteractiveAppListViewController: UIViewController {
         setupConstraints()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     private func setupViews() {
         title = "Интерактивная лента"
         view.addSubview(collectionView)
@@ -59,21 +71,39 @@ extension InteractiveAppListViewController: UICollectionViewDelegate, UICollecti
         
         let miniApp = miniApps[indexPath.row % miniApps.count]
         
-        if miniAppControllers[indexPath.row] == nil {
-            miniAppControllers[indexPath.row] = miniApp.viewControllerFactory()
-        }
-        
         if let miniAppVC = miniAppControllers[indexPath.row] {
-            cell.configure(with: miniAppVC, appName: miniApp.name, parentViewController: self)
+            if !cell.appContainerView.subviews.contains(miniAppVC.view) {
+                cell.configure(with: miniAppVC, appName: miniApp.name, parentViewController: self)
+            }
+        } else {
+            miniAppControllers[indexPath.row] = miniApp.viewControllerFactory()
+            
+            if let newMiniAppVC = miniAppControllers[indexPath.row] {
+                cell.configure(with: newMiniAppVC, appName: miniApp.name, parentViewController: self)
+            }
         }
         
         return cell
     }
+
 }
 
 extension InteractiveAppListViewController:  UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.size.width, height: view.frame.size.height / 2)
+        let isPad = UIDevice.current.userInterfaceIdiom == .pad
+        
+        if isPad {
+            
+            let columns: CGFloat = 2
+            let width = (collectionView.bounds.width - 10 * (columns - 1)) / columns
+            let height = collectionView.bounds.height / 2
+            return CGSize(width: width, height: height)
+        } else {
+            
+            let width = collectionView.bounds.width
+            let height = collectionView.bounds.height / 2
+            return CGSize(width: width, height: height)
+        }
     }
 }

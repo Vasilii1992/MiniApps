@@ -1,6 +1,7 @@
 
 import UIKit
 import TicTacToe
+import WordleGame
 
 final class MiniAppListViewController: UIViewController {
     
@@ -33,6 +34,12 @@ final class MiniAppListViewController: UIViewController {
         setupViews()
         setupConstraints()
         
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     private func setupViews() {
@@ -72,7 +79,6 @@ extension MiniAppListViewController: UICollectionViewDataSource {
         
         return cell
     }
-
 }
 
 extension MiniAppListViewController: UICollectionViewDelegate {
@@ -81,8 +87,6 @@ extension MiniAppListViewController: UICollectionViewDelegate {
         let appName = appNames[indexPath.row % appNames.count]
         if appName.name == "TicTacToe" {
             let ticTacToeVC = TicTacToeViewController()
-            ticTacToeVC.backButtonImage = UIImage(systemName: "chevron.left")
-            ticTacToeVC.backButtonTintColor = .black
             navigationController?.pushViewController(ticTacToeVC, animated: true)
         } else if appName.name == "Wordle" {
             let wordleVC = WordleViewController()
@@ -105,6 +109,18 @@ extension MiniAppListViewController: UICollectionViewDelegate {
 extension MiniAppListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.size.width, height: view.frame.size.height / 8)
+        let isPad = UIDevice.current.userInterfaceIdiom == .pad
+        
+        if isPad {
+            let columns: CGFloat = UIDevice.current.orientation.isLandscape ? 3 : 2
+            let width = (collectionView.bounds.width - (columns - 1) * 10) / columns
+            let height = view.frame.size.height / 8
+            return CGSize(width: width, height: height)
+        } else {
+            let width = collectionView.bounds.width
+            let height = collectionView.bounds.height / 8
+            return CGSize(width: width, height: height)
+        }
     }
 }
+

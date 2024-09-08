@@ -86,8 +86,9 @@ final class WeatherViewController: UIViewController {
             
             cityTextField.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 20),
             cityTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            cityTextField.widthAnchor.constraint(equalToConstant: view.bounds.width - 80),
-            
+            cityTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            cityTextField.heightAnchor.constraint(equalToConstant: 40),
+
             activityIndicator.leadingAnchor.constraint(equalTo: cityTextField.trailingAnchor, constant: 10),
             activityIndicator.centerYAnchor.constraint(equalTo: cityTextField.centerYAnchor),
             
@@ -103,8 +104,9 @@ final class WeatherViewController: UIViewController {
             
             weatherIcon.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             weatherIcon.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10),
-            weatherIcon.widthAnchor.constraint(equalToConstant: 150),
-            weatherIcon.heightAnchor.constraint(equalToConstant: 150),
+            weatherIcon.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2),
+            weatherIcon.heightAnchor.constraint(equalTo: weatherIcon.widthAnchor),
+
             
             errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             errorLabel.topAnchor.constraint(equalTo: weatherIcon.bottomAnchor, constant: 10),

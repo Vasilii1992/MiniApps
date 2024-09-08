@@ -11,10 +11,6 @@
 		6B402D402C8750D6007C15D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B402D3F2C8750D6007C15D2 /* SceneDelegate.swift */; };
 		6B402D472C8750D7007C15D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B402D462C8750D7007C15D2 /* Assets.xcassets */; };
 		6B402D4A2C8750D7007C15D2 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 6B402D492C8750D7007C15D2 /* Base */; };
-		6B4120AC2C8858E400AF1BA6 /* WordleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120AB2C8858E400AF1BA6 /* WordleViewController.swift */; };
-		6B4120AE2C88598900AF1BA6 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120AD2C88598900AF1BA6 /* KeyboardViewController.swift */; };
-		6B4120B02C88599B00AF1BA6 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120AF2C88599B00AF1BA6 /* BoardViewController.swift */; };
-		6B4120B22C88637600AF1BA6 /* KeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120B12C88637600AF1BA6 /* KeyCell.swift */; };
 		6B4120B62C88C05C00AF1BA6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120B52C88C05C00AF1BA6 /* Model.swift */; };
 		6B4120BF2C88C82F00AF1BA6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120BE2C88C82F00AF1BA6 /* MainTabBarController.swift */; };
 		6B4120C22C88C86300AF1BA6 /* MiniAppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120C12C88C86300AF1BA6 /* MiniAppListViewController.swift */; };
@@ -23,7 +19,6 @@
 		6B4120CA2C89107F00AF1BA6 /* InteractiveAppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120C92C89107F00AF1BA6 /* InteractiveAppListViewController.swift */; };
 		6B4120CC2C8910BB00AF1BA6 /* FullScreenAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120CB2C8910BB00AF1BA6 /* FullScreenAppViewController.swift */; };
 		6B4120CE2C89181A00AF1BA6 /* GameSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120CD2C89181A00AF1BA6 /* GameSelectionViewController.swift */; };
-		6B4B8A6D2C8DB41B002AF6D7 /* TicTacToe in Frameworks */ = {isa = PBXBuildFile; productRef = 6B4B8A6C2C8DB41B002AF6D7 /* TicTacToe */; };
 		6B54791C2C8B97AF00F8A2DE /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B54791B2C8B97AF00F8A2DE /* ApiManager.swift */; };
 		6B54791E2C8B97CD00F8A2DE /* WeatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B54791D2C8B97CD00F8A2DE /* WeatherError.swift */; };
 		6B5479222C8B981400F8A2DE /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5479212C8B981400F8A2DE /* Weather.swift */; };
@@ -47,6 +42,8 @@
 		6B585DE82C89C307006BDA02 /* IntuitionUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DE72C89C307006BDA02 /* IntuitionUI.swift */; };
 		6B585DEB2C89C365006BDA02 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DEA2C89C365006BDA02 /* GameEngine.swift */; };
 		6B585DEE2C89C381006BDA02 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DED2C89C381006BDA02 /* Coordinator.swift */; };
+		6B8970762C8DE09F00DB1B8F /* WordleGame in Frameworks */ = {isa = PBXBuildFile; productRef = 6B8970752C8DE09F00DB1B8F /* WordleGame */; };
+		6B8970982C8E074B00DB1B8F /* TicTacToe in Frameworks */ = {isa = PBXBuildFile; productRef = 6B8970972C8E074B00DB1B8F /* TicTacToe */; };
 		6B8CC11A2C8C908700B94BD3 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8CC1192C8C908700B94BD3 /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,10 +54,6 @@
 		6B402D462C8750D7007C15D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B402D492C8750D7007C15D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B402D4B2C8750D7007C15D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6B4120AB2C8858E400AF1BA6 /* WordleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleViewController.swift; sourceTree = "<group>"; };
-		6B4120AD2C88598900AF1BA6 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
-		6B4120AF2C88599B00AF1BA6 /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
-		6B4120B12C88637600AF1BA6 /* KeyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCell.swift; sourceTree = "<group>"; };
 		6B4120B52C88C05C00AF1BA6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		6B4120BE2C88C82F00AF1BA6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		6B4120C12C88C86300AF1BA6 /* MiniAppListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppListViewController.swift; sourceTree = "<group>"; };
@@ -98,7 +91,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B4B8A6D2C8DB41B002AF6D7 /* TicTacToe in Frameworks */,
+				6B8970762C8DE09F00DB1B8F /* WordleGame in Frameworks */,
+				6B8970982C8E074B00DB1B8F /* TicTacToe in Frameworks */,
 				6B54792A2C8B987E00F8A2DE /* SDWebImageMapKit in Frameworks */,
 				6B5479282C8B987E00F8A2DE /* SDWebImage in Frameworks */,
 			);
@@ -154,25 +148,6 @@
 				6B402D4B2C8750D7007C15D2 /* Info.plist */,
 			);
 			path = SupportingFiles;
-			sourceTree = "<group>";
-		};
-		6B4120A92C8858B600AF1BA6 /* Wordle */ = {
-			isa = PBXGroup;
-			children = (
-				6B4120AB2C8858E400AF1BA6 /* WordleViewController.swift */,
-				6B4120AD2C88598900AF1BA6 /* KeyboardViewController.swift */,
-				6B4120AF2C88599B00AF1BA6 /* BoardViewController.swift */,
-				6B4120B32C88809000AF1BA6 /* Cell */,
-			);
-			path = Wordle;
-			sourceTree = "<group>";
-		};
-		6B4120B32C88809000AF1BA6 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				6B4120B12C88637600AF1BA6 /* KeyCell.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		6B4120B42C88C04600AF1BA6 /* Model */ = {
@@ -328,7 +303,6 @@
 				6B54792E2C8BA12600F8A2DE /* Сrypto */,
 				6B54791A2C8B975A00F8A2DE /* Weather */,
 				6B585DDF2C89C1F5006BDA02 /* Intuition */,
-				6B4120A92C8858B600AF1BA6 /* Wordle */,
 			);
 			path = "Mini-Apps";
 			sourceTree = "<group>";
@@ -404,7 +378,8 @@
 			packageProductDependencies = (
 				6B5479272C8B987E00F8A2DE /* SDWebImage */,
 				6B5479292C8B987E00F8A2DE /* SDWebImageMapKit */,
-				6B4B8A6C2C8DB41B002AF6D7 /* TicTacToe */,
+				6B8970752C8DE09F00DB1B8F /* WordleGame */,
+				6B8970972C8E074B00DB1B8F /* TicTacToe */,
 			);
 			productName = MiniApps;
 			productReference = 6B402D3A2C8750D6007C15D2 /* MiniApps.app */;
@@ -436,7 +411,8 @@
 			mainGroup = 6B402D312C8750D6007C15D2;
 			packageReferences = (
 				6B5479262C8B987E00F8A2DE /* XCRemoteSwiftPackageReference "SDWebImage" */,
-				6B4B8A6B2C8DB41B002AF6D7 /* XCRemoteSwiftPackageReference "TicTacToe" */,
+				6B8970742C8DE09F00DB1B8F /* XCRemoteSwiftPackageReference "WordleGame" */,
+				6B8970962C8E074B00DB1B8F /* XCRemoteSwiftPackageReference "TicTacToe" */,
 			);
 			productRefGroup = 6B402D3B2C8750D6007C15D2 /* Products */;
 			projectDirPath = "";
@@ -470,7 +446,6 @@
 				6B4120CA2C89107F00AF1BA6 /* InteractiveAppListViewController.swift in Sources */,
 				6B4120CC2C8910BB00AF1BA6 /* FullScreenAppViewController.swift in Sources */,
 				6B54793A2C8BA34300F8A2DE /* Endpoint.swift in Sources */,
-				6B4120B22C88637600AF1BA6 /* KeyCell.swift in Sources */,
 				6B5479382C8BA32300F8A2DE /* Constants.swift in Sources */,
 				6B4120C62C88C92900AF1BA6 /* InteractiveAppCell.swift in Sources */,
 				6B5479472C8BA4BB00F8A2DE /* CryptoController.swift in Sources */,
@@ -485,18 +460,15 @@
 				6B54791C2C8B97AF00F8A2DE /* ApiManager.swift in Sources */,
 				6B585DEB2C89C365006BDA02 /* GameEngine.swift in Sources */,
 				6B5479252C8B985500F8A2DE /* WeatherLabel.swift in Sources */,
-				6B4120AE2C88598900AF1BA6 /* KeyboardViewController.swift in Sources */,
 				6B585DEE2C89C381006BDA02 /* Coordinator.swift in Sources */,
 				6B54793E2C8BA39C00F8A2DE /* CoinServiceError.swift in Sources */,
 				6B54792D2C8B98C900F8A2DE /* WeatherViewController.swift in Sources */,
 				6B585DE12C89C26D006BDA02 /* UILabel.ext.swift in Sources */,
-				6B4120AC2C8858E400AF1BA6 /* WordleViewController.swift in Sources */,
 				6B402D3E2C8750D6007C15D2 /* AppDelegate.swift in Sources */,
 				6B54791E2C8B97CD00F8A2DE /* WeatherError.swift in Sources */,
 				6B402D402C8750D6007C15D2 /* SceneDelegate.swift in Sources */,
 				6B5479332C8BA2C700F8A2DE /* CoinError.swift in Sources */,
 				6B5479442C8BA48A00F8A2DE /* CryptoControllerViewModel.swift in Sources */,
-				6B4120B02C88599B00AF1BA6 /* BoardViewController.swift in Sources */,
 				6B4120B62C88C05C00AF1BA6 /* Model.swift in Sources */,
 				6B5479412C8BA3D500F8A2DE /* CoinCell.swift in Sources */,
 				6B4120C22C88C86300AF1BA6 /* MiniAppListViewController.swift in Sources */,
@@ -724,14 +696,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6B4B8A6B2C8DB41B002AF6D7 /* XCRemoteSwiftPackageReference "TicTacToe" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Vasilii1992/TicTacToe.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.3;
-			};
-		};
 		6B5479262C8B987E00F8A2DE /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
@@ -740,14 +704,25 @@
 				minimumVersion = 5.19.7;
 			};
 		};
+		6B8970742C8DE09F00DB1B8F /* XCRemoteSwiftPackageReference "WordleGame" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Vasilii1992/WordleGame.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
+		6B8970962C8E074B00DB1B8F /* XCRemoteSwiftPackageReference "TicTacToe" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Vasilii1992/TicTacToe";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.7;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6B4B8A6C2C8DB41B002AF6D7 /* TicTacToe */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6B4B8A6B2C8DB41B002AF6D7 /* XCRemoteSwiftPackageReference "TicTacToe" */;
-			productName = TicTacToe;
-		};
 		6B5479272C8B987E00F8A2DE /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6B5479262C8B987E00F8A2DE /* XCRemoteSwiftPackageReference "SDWebImage" */;
@@ -757,6 +732,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6B5479262C8B987E00F8A2DE /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
+		};
+		6B8970752C8DE09F00DB1B8F /* WordleGame */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B8970742C8DE09F00DB1B8F /* XCRemoteSwiftPackageReference "WordleGame" */;
+			productName = WordleGame;
+		};
+		6B8970972C8E074B00DB1B8F /* TicTacToe */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B8970962C8E074B00DB1B8F /* XCRemoteSwiftPackageReference "TicTacToe" */;
+			productName = TicTacToe;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -20,6 +20,8 @@ final class WeatherLabel: UILabel {
         super.init(frame: .zero)
         
         self.translatesAutoresizingMaskIntoConstraints = false
+        self.adjustsFontSizeToFitWidth = true
+        self.minimumScaleFactor = 0.5
         setupLabel()
     }
     

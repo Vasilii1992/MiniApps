@@ -1,5 +1,6 @@
 import UIKit
 import TicTacToe
+import WordleGame
 
 protocol GameSelectionDelegate: AnyObject {
     func didSelectGame(index: Int)

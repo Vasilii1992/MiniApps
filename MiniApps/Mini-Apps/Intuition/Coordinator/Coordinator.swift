@@ -64,7 +64,7 @@ final class Coordinator {
 
         NSLayoutConstraint.activate([
             UI.mainLabelStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            UI.mainLabelStack.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -80)
+            UI.mainLabelStack.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -70)
         ])
 
         NSLayoutConstraint.activate([
@@ -75,12 +75,12 @@ final class Coordinator {
         ])
 
         NSLayoutConstraint.activate([
-            UI.leftDoor.leadingAnchor.constraint(equalTo: buttonView.leadingAnchor),
+            UI.leftDoor.trailingAnchor.constraint(equalTo: buttonView.centerXAnchor, constant: -10),
             UI.leftDoor.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
             UI.leftDoor.widthAnchor.constraint(equalToConstant: 126),
             UI.leftDoor.heightAnchor.constraint(equalToConstant: 140),
-
-            UI.rightDoor.trailingAnchor.constraint(equalTo: buttonView.trailingAnchor),
+            
+            UI.rightDoor.leadingAnchor.constraint(equalTo: buttonView.centerXAnchor, constant: 10),
             UI.rightDoor.centerYAnchor.constraint(equalTo: buttonView.centerYAnchor),
             UI.rightDoor.widthAnchor.constraint(equalToConstant: 126),
             UI.rightDoor.heightAnchor.constraint(equalToConstant: 140)

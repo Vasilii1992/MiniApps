@@ -16,6 +16,8 @@ final class InteractiveAppCell: UICollectionViewCell {
     var appContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.autoresizesSubviews = true
+        view.contentMode = .scaleAspectFit
         return view
     }()
     
@@ -24,6 +26,8 @@ final class InteractiveAppCell: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.textAlignment = .center
         label.textColor = .black
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -42,13 +46,6 @@ final class InteractiveAppCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        for subview in appContainerView.subviews {
-            subview.removeFromSuperview()
-        }
-    }
-    
     func configure(with appViewController: UIViewController, appName: String, parentViewController: UIViewController) {
         for childVC in parentViewController.children {
             if childVC.view.isDescendant(of: appContainerView) {
@@ -63,9 +60,12 @@ final class InteractiveAppCell: UICollectionViewCell {
         appContainerView.addSubview(appViewController.view)
         appViewController.didMove(toParent: parentViewController)
         
+        appViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        appViewController.view.contentMode = .scaleAspectFit
+        
         appNameLabel.text = appName
     }
-    
+
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),

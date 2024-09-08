@@ -1,5 +1,5 @@
 {
-  "originHash" : "efc972c0629bbe236ab51ed22a62af71708de83e1a6f9fb4905a3d0f434a411d",
+  "originHash" : "57b5f66ae540af466f22d31105eb796f3013b62df901b7e2f11acd0bfb02bea2",
   "pins" : [
     {
       "identity" : "sdwebimage",
@@ -15,8 +15,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Vasilii1992/TicTacToe.git",
       "state" : {
-        "revision" : "625ff7821c8513797d60317d5b52d6088938d9ce",
-        "version" : "1.0.3"
+        "revision" : "f485e6281bf349e677e0968711e014beff4513c0",
+        "version" : "1.0.7"
+      }
+    },
+    {
+      "identity" : "wordlegame",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Vasilii1992/WordleGame.git",
+      "state" : {
+        "revision" : "dfca0a2a51509c01e3e9e329fd6aad1cd46732f5",
+        "version" : "1.0.2"
       }
     }
   ],
