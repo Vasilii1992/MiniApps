@@ -23,6 +23,7 @@
 		6B4120CA2C89107F00AF1BA6 /* InteractiveAppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120C92C89107F00AF1BA6 /* InteractiveAppListViewController.swift */; };
 		6B4120CC2C8910BB00AF1BA6 /* FullScreenAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120CB2C8910BB00AF1BA6 /* FullScreenAppViewController.swift */; };
 		6B4120CE2C89181A00AF1BA6 /* GameSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4120CD2C89181A00AF1BA6 /* GameSelectionViewController.swift */; };
+		6B4B8A6D2C8DB41B002AF6D7 /* TicTacToe in Frameworks */ = {isa = PBXBuildFile; productRef = 6B4B8A6C2C8DB41B002AF6D7 /* TicTacToe */; };
 		6B54791C2C8B97AF00F8A2DE /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B54791B2C8B97AF00F8A2DE /* ApiManager.swift */; };
 		6B54791E2C8B97CD00F8A2DE /* WeatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B54791D2C8B97CD00F8A2DE /* WeatherError.swift */; };
 		6B5479222C8B981400F8A2DE /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5479212C8B981400F8A2DE /* Weather.swift */; };
@@ -47,7 +48,6 @@
 		6B585DEB2C89C365006BDA02 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DEA2C89C365006BDA02 /* GameEngine.swift */; };
 		6B585DEE2C89C381006BDA02 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DED2C89C381006BDA02 /* Coordinator.swift */; };
 		6B8CC11A2C8C908700B94BD3 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8CC1192C8C908700B94BD3 /* Reachability.swift */; };
-		6B905AFF2C8D11B9009C395D /* TicTacToe in Frameworks */ = {isa = PBXBuildFile; productRef = 6B905AFE2C8D11B9009C395D /* TicTacToe */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B905AFF2C8D11B9009C395D /* TicTacToe in Frameworks */,
+				6B4B8A6D2C8DB41B002AF6D7 /* TicTacToe in Frameworks */,
 				6B54792A2C8B987E00F8A2DE /* SDWebImageMapKit in Frameworks */,
 				6B5479282C8B987E00F8A2DE /* SDWebImage in Frameworks */,
 			);
@@ -165,13 +165,6 @@
 				6B4120B32C88809000AF1BA6 /* Cell */,
 			);
 			path = Wordle;
-			sourceTree = "<group>";
-		};
-		6B4120AA2C8858C800AF1BA6 /* TicTacToe */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TicTacToe;
 			sourceTree = "<group>";
 		};
 		6B4120B32C88809000AF1BA6 /* Cell */ = {
@@ -336,7 +329,6 @@
 				6B54791A2C8B975A00F8A2DE /* Weather */,
 				6B585DDF2C89C1F5006BDA02 /* Intuition */,
 				6B4120A92C8858B600AF1BA6 /* Wordle */,
-				6B4120AA2C8858C800AF1BA6 /* TicTacToe */,
 			);
 			path = "Mini-Apps";
 			sourceTree = "<group>";
@@ -412,7 +404,7 @@
 			packageProductDependencies = (
 				6B5479272C8B987E00F8A2DE /* SDWebImage */,
 				6B5479292C8B987E00F8A2DE /* SDWebImageMapKit */,
-				6B905AFE2C8D11B9009C395D /* TicTacToe */,
+				6B4B8A6C2C8DB41B002AF6D7 /* TicTacToe */,
 			);
 			productName = MiniApps;
 			productReference = 6B402D3A2C8750D6007C15D2 /* MiniApps.app */;
@@ -444,7 +436,7 @@
 			mainGroup = 6B402D312C8750D6007C15D2;
 			packageReferences = (
 				6B5479262C8B987E00F8A2DE /* XCRemoteSwiftPackageReference "SDWebImage" */,
-				6B905AFD2C8D11B9009C395D /* XCRemoteSwiftPackageReference "TicTacToe" */,
+				6B4B8A6B2C8DB41B002AF6D7 /* XCRemoteSwiftPackageReference "TicTacToe" */,
 			);
 			productRefGroup = 6B402D3B2C8750D6007C15D2 /* Products */;
 			projectDirPath = "";
@@ -577,7 +569,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -634,7 +626,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -732,6 +724,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6B4B8A6B2C8DB41B002AF6D7 /* XCRemoteSwiftPackageReference "TicTacToe" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Vasilii1992/TicTacToe.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
 		6B5479262C8B987E00F8A2DE /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
@@ -740,17 +740,14 @@
 				minimumVersion = 5.19.7;
 			};
 		};
-		6B905AFD2C8D11B9009C395D /* XCRemoteSwiftPackageReference "TicTacToe" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Vasilii1992/TicTacToe.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6B4B8A6C2C8DB41B002AF6D7 /* TicTacToe */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B4B8A6B2C8DB41B002AF6D7 /* XCRemoteSwiftPackageReference "TicTacToe" */;
+			productName = TicTacToe;
+		};
 		6B5479272C8B987E00F8A2DE /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6B5479262C8B987E00F8A2DE /* XCRemoteSwiftPackageReference "SDWebImage" */;
@@ -760,11 +757,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6B5479262C8B987E00F8A2DE /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
-		};
-		6B905AFE2C8D11B9009C395D /* TicTacToe */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6B905AFD2C8D11B9009C395D /* XCRemoteSwiftPackageReference "TicTacToe" */;
-			productName = TicTacToe;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

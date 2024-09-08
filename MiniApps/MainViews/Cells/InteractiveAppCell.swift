@@ -50,7 +50,6 @@ final class InteractiveAppCell: UICollectionViewCell {
     }
     
     func configure(with appViewController: UIViewController, appName: String, parentViewController: UIViewController) {
-        
         for childVC in parentViewController.children {
             if childVC.view.isDescendant(of: appContainerView) {
                 childVC.willMove(toParent: nil)

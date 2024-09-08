@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Vasilii1992/TicTacToe.git",
       "state" : {
-        "branch" : "main",
-        "revision" : "eb9dc8826ecf3c6320ba7fe0951a5517fa254a0d"
+        "revision" : "625ff7821c8513797d60317d5b52d6088938d9ce",
+        "version" : "1.0.3"
       }
     }
   ],

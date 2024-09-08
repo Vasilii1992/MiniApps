@@ -87,7 +87,7 @@ final class WeatherViewController: UIViewController {
             cityTextField.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 20),
             cityTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             cityTextField.widthAnchor.constraint(equalToConstant: view.bounds.width - 80),
-
+            
             activityIndicator.leadingAnchor.constraint(equalTo: cityTextField.trailingAnchor, constant: 10),
             activityIndicator.centerYAnchor.constraint(equalTo: cityTextField.centerYAnchor),
             
@@ -110,7 +110,7 @@ final class WeatherViewController: UIViewController {
             errorLabel.topAnchor.constraint(equalTo: weatherIcon.bottomAnchor, constant: 10),
             errorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             errorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-
+            
         ])
     }
     
@@ -120,11 +120,11 @@ final class WeatherViewController: UIViewController {
         weatherIcon.image = nil
         cityNameLabel.text = ""
     }
-
+    
     private func fetchData(for city: String) {
         activityIndicator.startAnimating()
         errorLabel.isHidden = true
-
+        
         apiManager.geocode(city: city) { [weak self] geocodingResult, error in
             guard let self = self else { return }
             if let error = error {
@@ -168,8 +168,8 @@ final class WeatherViewController: UIViewController {
             }
         }
     }
-
-
+    
+    
     private func updateUI(with weather: Weather, city: String) {
         errorLabel.isHidden = true
         cityNameLabel.text = city
@@ -181,7 +181,7 @@ final class WeatherViewController: UIViewController {
             weatherIcon.sd_setImage(with: iconURL, completed: nil)
         }
     }
-
+    
     private func handleNetworkError(_ message: String) {
         activityIndicator.stopAnimating()
         clearWeatherData()
@@ -218,7 +218,7 @@ extension WeatherViewController: UITextFieldDelegate {
         
         return true
     }
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

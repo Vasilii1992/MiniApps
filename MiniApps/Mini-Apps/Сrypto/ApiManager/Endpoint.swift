@@ -5,7 +5,6 @@ enum Endpoint {
 
     case fetchCoins(url:String = "/v1/cryptocurrency/listings/latest")
     
-    
     var request: URLRequest? {
         guard let url = self.url else { return nil }
         var request = URLRequest(url: url)

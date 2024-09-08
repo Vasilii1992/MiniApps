@@ -110,5 +110,3 @@ extension FullScreenAppViewController: GameSelectionDelegate {
         displaySelectedApp(index: index)
     }
 }
-
-

@@ -19,9 +19,9 @@ final class MiniAppListViewController: UIViewController {
     let appNames: [MiniApps] = [
         .init(name: "Crypto", image: "crypto", description: "Основные криптовалюты"),
         .init(name: "Weather", image: "weather", description: "Узнай погоду в любом городе"),
-        .init(name: "TicTacToe", image: "TicTacToe", description: "Классическая игра в кресики нолики"),
+        .init(name: "TicTacToe", image: "ticTacToe", description: "Классическая игра в крестики-нолики"),
         .init(name: "Wordle", image: "wordle", description: "Игра, где нужно угадать слово"),
-        .init(name: "Intuition", image: "intuition", description: "Откадай дверь")
+        .init(name: "Intuition", image: "intuition", description: "Попробуй отгадай дверь")
     ]
     
     private let numberOfCells = 10
@@ -81,6 +81,8 @@ extension MiniAppListViewController: UICollectionViewDelegate {
         let appName = appNames[indexPath.row % appNames.count]
         if appName.name == "TicTacToe" {
             let ticTacToeVC = TicTacToeViewController()
+            ticTacToeVC.backButtonImage = UIImage(systemName: "chevron.left")
+            ticTacToeVC.backButtonTintColor = .black
             navigationController?.pushViewController(ticTacToeVC, animated: true)
         } else if appName.name == "Wordle" {
             let wordleVC = WordleViewController()

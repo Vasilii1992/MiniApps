@@ -74,7 +74,7 @@ final class CoinCell: UITableViewCell {
         NSLayoutConstraint.activate([
             coinLogo.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             coinLogo.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
-            coinLogo.widthAnchor.constraint(equalTo: contentView.heightAnchor,multiplier: 0.75), //
+            coinLogo.widthAnchor.constraint(equalTo: contentView.heightAnchor,multiplier: 0.75),
             coinLogo.heightAnchor.constraint(equalTo: contentView.heightAnchor,multiplier: 0.75),
             
             coinName.leadingAnchor.constraint(equalTo: coinLogo.trailingAnchor,constant: 16),
@@ -83,7 +83,6 @@ final class CoinCell: UITableViewCell {
             
             coinPrice.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
             coinPrice.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-
         ])
     }
 }
