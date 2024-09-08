@@ -111,8 +111,7 @@ final class WeatherViewController: UIViewController {
             errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             errorLabel.topAnchor.constraint(equalTo: weatherIcon.bottomAnchor, constant: 10),
             errorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            errorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            
+            errorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
         ])
     }
     

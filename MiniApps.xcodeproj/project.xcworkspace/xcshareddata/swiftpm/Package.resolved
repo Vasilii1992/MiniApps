@@ -1,5 +1,5 @@
 {
-  "originHash" : "57b5f66ae540af466f22d31105eb796f3013b62df901b7e2f11acd0bfb02bea2",
+  "originHash" : "0cfa6e3a1f2c448d30b31dbdef2ad380e9a5e08cac1d0368d854dd0cb35ee548",
   "pins" : [
     {
       "identity" : "sdwebimage",
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Vasilii1992/WordleGame.git",
       "state" : {
-        "revision" : "dfca0a2a51509c01e3e9e329fd6aad1cd46732f5",
-        "version" : "1.0.2"
+        "revision" : "330a2e9fc00a3fcdbe19a25d21ef747c05314f72",
+        "version" : "1.0.3"
       }
     }
   ],

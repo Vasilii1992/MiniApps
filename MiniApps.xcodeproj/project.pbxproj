@@ -42,9 +42,9 @@
 		6B585DE82C89C307006BDA02 /* IntuitionUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DE72C89C307006BDA02 /* IntuitionUI.swift */; };
 		6B585DEB2C89C365006BDA02 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DEA2C89C365006BDA02 /* GameEngine.swift */; };
 		6B585DEE2C89C381006BDA02 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B585DED2C89C381006BDA02 /* Coordinator.swift */; };
-		6B8970762C8DE09F00DB1B8F /* WordleGame in Frameworks */ = {isa = PBXBuildFile; productRef = 6B8970752C8DE09F00DB1B8F /* WordleGame */; };
 		6B8970982C8E074B00DB1B8F /* TicTacToe in Frameworks */ = {isa = PBXBuildFile; productRef = 6B8970972C8E074B00DB1B8F /* TicTacToe */; };
 		6B8CC11A2C8C908700B94BD3 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8CC1192C8C908700B94BD3 /* Reachability.swift */; };
+		6BA4EA7C2C8E25E9008A1E93 /* WordleGame in Frameworks */ = {isa = PBXBuildFile; productRef = 6BA4EA7B2C8E25E9008A1E93 /* WordleGame */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,8 +91,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B8970762C8DE09F00DB1B8F /* WordleGame in Frameworks */,
 				6B8970982C8E074B00DB1B8F /* TicTacToe in Frameworks */,
+				6BA4EA7C2C8E25E9008A1E93 /* WordleGame in Frameworks */,
 				6B54792A2C8B987E00F8A2DE /* SDWebImageMapKit in Frameworks */,
 				6B5479282C8B987E00F8A2DE /* SDWebImage in Frameworks */,
 			);
@@ -378,8 +378,8 @@
 			packageProductDependencies = (
 				6B5479272C8B987E00F8A2DE /* SDWebImage */,
 				6B5479292C8B987E00F8A2DE /* SDWebImageMapKit */,
-				6B8970752C8DE09F00DB1B8F /* WordleGame */,
 				6B8970972C8E074B00DB1B8F /* TicTacToe */,
+				6BA4EA7B2C8E25E9008A1E93 /* WordleGame */,
 			);
 			productName = MiniApps;
 			productReference = 6B402D3A2C8750D6007C15D2 /* MiniApps.app */;
@@ -411,8 +411,8 @@
 			mainGroup = 6B402D312C8750D6007C15D2;
 			packageReferences = (
 				6B5479262C8B987E00F8A2DE /* XCRemoteSwiftPackageReference "SDWebImage" */,
-				6B8970742C8DE09F00DB1B8F /* XCRemoteSwiftPackageReference "WordleGame" */,
 				6B8970962C8E074B00DB1B8F /* XCRemoteSwiftPackageReference "TicTacToe" */,
+				6BA4EA7A2C8E25E9008A1E93 /* XCRemoteSwiftPackageReference "WordleGame" */,
 			);
 			productRefGroup = 6B402D3B2C8750D6007C15D2 /* Products */;
 			projectDirPath = "";
@@ -704,20 +704,20 @@
 				minimumVersion = 5.19.7;
 			};
 		};
-		6B8970742C8DE09F00DB1B8F /* XCRemoteSwiftPackageReference "WordleGame" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Vasilii1992/WordleGame.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.2;
-			};
-		};
 		6B8970962C8E074B00DB1B8F /* XCRemoteSwiftPackageReference "TicTacToe" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Vasilii1992/TicTacToe";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.7;
+			};
+		};
+		6BA4EA7A2C8E25E9008A1E93 /* XCRemoteSwiftPackageReference "WordleGame" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Vasilii1992/WordleGame.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -733,15 +733,15 @@
 			package = 6B5479262C8B987E00F8A2DE /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
 		};
-		6B8970752C8DE09F00DB1B8F /* WordleGame */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6B8970742C8DE09F00DB1B8F /* XCRemoteSwiftPackageReference "WordleGame" */;
-			productName = WordleGame;
-		};
 		6B8970972C8E074B00DB1B8F /* TicTacToe */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6B8970962C8E074B00DB1B8F /* XCRemoteSwiftPackageReference "TicTacToe" */;
 			productName = TicTacToe;
+		};
+		6BA4EA7B2C8E25E9008A1E93 /* WordleGame */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6BA4EA7A2C8E25E9008A1E93 /* XCRemoteSwiftPackageReference "WordleGame" */;
+			productName = WordleGame;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
